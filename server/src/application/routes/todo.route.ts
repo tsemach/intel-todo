@@ -4,8 +4,8 @@ const logger = createLogger('SanityRoute');
 import * as logger from 'logging';
 import * as express from 'express';
 
-import Server from '../application/server';
-import Service from '../application/service.type';
+import Server from '../../express/server';
+import Service from '../../express/service.type';
 
 class SanityRoute implements Service {
 
