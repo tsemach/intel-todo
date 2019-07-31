@@ -1,17 +1,17 @@
-h1 {
-  color: blue;
-}
-.form-row {
-  padding: 10px 0;
 
-  /* flex needs to define on the parent container so it can handle its childrens */
+.app-container {
   display: flex;
+  justify-content: stretch;
 }
 
-.form-row label {
-  padding-right: 10px;
+.app-todos {
+  flex: 1;
+  border: 1px solid;
+  background-color: aqua;
 }
 
-.form-row input {
-  flex: 1;  /* grow and fill in the avaiable space in a row*/
+.app-todolist {
+  flex: 3;
+  border: 1px solid;
+  background-color: aqua;
 }

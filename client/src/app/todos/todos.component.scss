@@ -1,4 +1,18 @@
 
-.app-container {
+.todos-container {
   display: flex;
+  flex-direction: column;
 }
+
+.todos-header {
+  align-self: center;
+}
+
+.todos-row {
+  display: flex;
+
+  input {
+    flex: 1;
+  }
+}
+
