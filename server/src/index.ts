@@ -1,8 +1,8 @@
-import Server from './express/application';
+import Server from './express';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import './express/services';
+import './application/routes';
 
 const port = process.env.PORT || 3000;
 
