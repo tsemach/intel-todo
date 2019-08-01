@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { ToDosComponent } from './todos/todos.component';
 import { ToDoListComponent } from './todolist/todolist.component';
 import { ToDosService } from './services/todos.service';
+import { ToDoTileComponent } from './todotile/todotile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToDosComponent,
-    ToDoListComponent
+    ToDoListComponent,
+    ToDoTileComponent
   ],
   imports: [
     BrowserModule,

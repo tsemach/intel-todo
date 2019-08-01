@@ -1,0 +1,14 @@
+
+.todo-title-container {
+  display: flex;
+  justify-content: space-between;
+
+  .todo-title-counts-container {
+    button {
+      margin: 5px;
+      border-radius: 25%;
+      background-color: cornflowerblue;
+      color: black;      
+    }
+  }
+}

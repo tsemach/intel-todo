@@ -31,7 +31,7 @@ const insertDocuments = function(db, callback) {
       username: 'tsemach@intel.com',
       todos: [
         {
-          title: 'Finish this angular http client',
+          title: 'first todo: Finish this angular http client',
           items: [
             {
               header: 'complete get all todos',
@@ -42,7 +42,33 @@ const insertDocuments = function(db, callback) {
               isCompleted: false
             }
           ]
-        }
+        },
+        {
+          title: 'second todo: refactory mongo document',
+          items: [
+            {
+              header: 'login to MLab',
+              isCompleted: true
+            },
+            {
+              header: 'delete old one',
+              isCompleted: false
+            }
+          ]
+        },
+        {
+          title: 'third todo: fix angular http-client get service',
+          items: [
+            {
+              header: 'do get.pip.map',
+              isCompleted: true
+            },
+            {
+              header: 'copy to my array',
+              isCompleted: false
+            }
+          ]
+        }        
       ]
     },
     // {
@@ -67,8 +93,8 @@ const insertDocuments = function(db, callback) {
 
   ], function(err, result) {
     assert.equal(err, null);
-    assert.equal(2, result.result.n);
-    assert.equal(2, result.ops.length);
+    // assert.equal(2, result.result.n);
+    // assert.equal(2, result.ops.length);
     console.log("Inserted 3 documents into the collection");
     callback(result);
   });

@@ -9,22 +9,44 @@ import { ToDosModel } from '../common/todos.model';
   styleUrls: ['./todos.component.scss']
 })
 export class ToDosComponent implements OnInit {
-  todos: {success: string, data: ToDosModel[]}
+  data: ToDosModel;
+  isFetching = false;
+  error = null;
 
   constructor(private todosService: ToDosService) { }
 
   ngOnInit() {
+    this.getToDos();
+    // this.isFetching = true;
+    // this.todosService.getToDos('tsemach@intel.com', null)
+    // .subscribe(
+    //   data => {
+    //     this.data = data;
+    //     // console.log("data =", JSON.stringify(this.data, undefined, 2))
+    //     // console.log("data.legnth =", this.data.length)
+    //     this.isFetching = false;
+    //     // this.isFetching = false;
+    //     // this.loadedPosts = posts;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //     this.error = error.message;
+    //   })
+  }
+
+  getToDos() {    
+    this.isFetching = true;
     this.todosService.getToDos('tsemach@intel.com', null)
     .subscribe(
-      todos => {
-        this.todos = todos;
-        console.log("todos=", JSON.stringify(this.todos))
-        // this.isFetching = false;
-        // this.loadedPosts = posts;
+      data => {
+        this.isFetching = false;
+        this.data = data;
+        console.log("[ToDosComponent] data =", JSON.stringify(this.data, undefined, 2))
       },
       error => {
-        // this.error = error.message;
+        this.error = error.message;
         console.log(error);
-      })
-    }
+      }
+    );
+  }
 }
