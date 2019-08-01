@@ -12,6 +12,8 @@ mongoose.connection.once('open', () => {
   console.log('connected to todos database');
 });
 
+//Server.instance.init();
+
 const port = process.env.PORT || 3000;
 
 Server.instance.listen('localhost', +port);

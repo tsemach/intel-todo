@@ -19,7 +19,7 @@ class TodosRoute implements Service {
     // route: sanity ------------------------------------------------------------
     let router = express.Router();
 
-    router.get('/', async (req: express.Request, res: express.Response, next) => {      
+    router.get('/', async (req: express.Request, res: express.Response, next) => {
       const username = req.query['username']
       if (username) {
         logger.info('GET:/v1/todos - got username = ', username)
@@ -28,7 +28,7 @@ class TodosRoute implements Service {
         logger.info("ToDos: ", JSON.stringify(reply, undefined, 2));
         res.json({success: true, data: reply});
 
-        return;        
+        return;
       }
 
       res.json({success: false, data: {message: 'user-route: no username found'}});

@@ -10,32 +10,41 @@ import Middleware from './middleware.type';
 export default class Server {
   private static _instance: Server = new Server();
 
-  public express: express.Application;
-  
-  private constructor() { 
-    this.express = express();    
+  //public express: express.Application;
+  public app:express.Application = express();
+    
+  private constructor() {     
+    this.use(this.logger)
+    this.use(bodyParser.json());
+    this.use(bodyParser.urlencoded({extended: false}));
+
+    this.app.use(cors({origin: '*'}));
   }
 
   public static get instance() {
     return Server._instance || (Server._instance = new Server());    
   }
   
-  public init(middlewares: Middleware[]): void {
-    middlewares.forEach(m => {
-      this.use(m);  
-    });
-    this.use(cors());
-    this.use(bodyParser.json());
-    this.use(bodyParser.urlencoded({extended: false}));
+  private logger(req: express.Request, res: express.Response, next: express.NextFunction) {
+    // logger.info("request:", JSON.stringify(req, undefined, 2));
+    next()
+  }
+
+  public init(middlewares: Middleware[]): void { 
+    if (middlewares) {
+      middlewares.forEach(m => {
+        this.use(m);  
+      });
+    }
   }
 
   use(middleware: any) {
-    this.express.use(middleware);
+    this.app.use(middleware);
   }
 
   middleware(where: string, middleware: Middleware) {
     logger.info("going to add middleware at: " + where);
-    this.express.use(where, middleware.add(this.express));
+    this.app.use(where, middleware.add(this.app));
   }
 
   /**
@@ -46,11 +55,11 @@ export default class Server {
    */
   route(where: string, service: Service) {
     logger.info("going to add service at: " + where);
-    this.express.use(where, service.add(this.express));
+    this.app.use(where, service.add(this.app));
   }
 
   listen(host: string, port: number) {
-    this.express.listen(port, () => {
+    this.app.listen(port, () => {
       // success callback
       console.log(`Listening at http://${host}:${port}/`);
     });
