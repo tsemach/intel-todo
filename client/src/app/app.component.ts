@@ -29,6 +29,9 @@ export class AppComponent {
       data => {
         this.isFetching = false;
         this.data = data;
+        if (this.data && this.data.todos.length > 0) {
+          this.current = this.data.todos[0];
+        }
         console.log("[AppComponent] data =", JSON.stringify(this.data, undefined, 2))
       },
       error => {

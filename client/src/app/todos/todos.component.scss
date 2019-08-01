@@ -1,28 +1,29 @@
 
-
 .todos-container {
   display: flex;
   flex-direction: column;
-}
 
-.todos-header {
-  align-self: center;
-}
-
-.todos-row {
-  display: flex;
-
-  input {
-    flex: 1;
+  .todos-header {
+    align-self: center;
   }
-  
-  .todos-title-container {
-    display: flex;
+}
+
+.todos-title-container {
+  display: flex;   
+
+  .todos-title {
+    padding: 0;
+  } 
+
+  ul {
+    padding: 5px;
+    flex: 1;
   }
 }
 
 #todos-add {
   display: flex;  
+  padding: 5px;
   a {
     text-decoration: none; /* get rid of the underline of the anchor */
     font-family: Arial, Helvetica, sans-serif;
@@ -30,8 +31,21 @@
     color: #fff;
     background-color: #000000; 
     margin-right: 10px;
+
+    &:hover {
+      background-color: blueviolet;
+    }
   }
   input {
     flex: 1;  /* grow and fill in the avaiable space in a row*/
   }
 }
+// // .todos-title-container:hover {
+// //       background-color: blueviolet;
+// //     }
+//  .todos-title {
+//     padding: 0;
+//  }
+//  .todos-title-container ul {
+//    padding: 0;
+//  }
