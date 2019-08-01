@@ -5,10 +5,10 @@
     <label for="name">User Name:</label>
     <input type="text" id="name">
   </div>
-
-  <div class="app-container-main">
-    <app-todos class="app-todos" (todoTitleClick)="onTodoTitleSelected($event)"></app-todos>  
-    <app-todolist class="app-todolist"></app-todolist>
+  
+  <div class="app-container-main">    
+    <app-todos class="app-todos" [data]="data" (todoTitleClick)="onTodoTitleSelected($event)"></app-todos>  
+    <app-todolist class="app-todolist" [todo]="current"></app-todolist>
   </div>
 </div>
 

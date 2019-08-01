@@ -1,3 +1,7 @@
-<p>
-  to-do-list works!
-</p>
+<p *ngIf="!todo">No todo availble</p>
+<div *ngIf="todo">
+  <p>count: {{ todo.items.length }} </p>
+  <ul *ngFor="let item of todo.items">
+    <span>header = {{ item.header}} isCompleted: {{ item.isCompleted }}</span>
+  </ul>
+</div>
