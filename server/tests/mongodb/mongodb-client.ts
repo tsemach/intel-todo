@@ -31,40 +31,39 @@ const insertDocuments = function(db, callback) {
       username: 'tsemach@intel.com',
       todos: [
         {
-          title: 'Hire in Intel',
+          title: 'Finish this angular http client',
           items: [
             {
-              header: 'Pass interview',
+              header: 'complete get all todos',
               isCompleted: true
             },
             {
-              header: 'Do home assigment',
-              isCompleted: false
-            }
-
-          ]
-        }
-      ]
-    },
-    {
-      displayName: 'Nir Ranchmani',
-      username: 'nir.nrahmani@intel.com',
-      todos: [
-        {
-          title: 'Hire Tsemach',
-          items: [
-            {
-              header: 'Run interview on 30-Jul',
-              isCompleted: true
-            },
-            {
-              header: 'Send home assigment',
+              header: 'parse response with rxjs',
               isCompleted: false
             }
           ]
         }
       ]
     },
+    // {
+    //   displayName: 'Nir Ranchmani',
+    //   username: 'nir.nrahmani@intel.com',
+    //   todos: [
+    //     {
+    //       title: 'Hire Tsemach',
+    //       items: [
+    //         {
+    //           header: 'Run interview on 30-Jul',
+    //           isCompleted: true
+    //         },
+    //         {
+    //           header: 'Send home assigment',
+    //           isCompleted: false
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // },
 
   ], function(err, result) {
     assert.equal(err, null);
