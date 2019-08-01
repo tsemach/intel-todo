@@ -1,17 +1,40 @@
 
 .app-container {
   display: flex;
+  flex-direction: column;
   justify-content: stretch;
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  .app-container-username {
+    display: flex;
+    margin-bottom: 10px;    
+
+    .label {      
+      margin-right: 10px;
+    }
+
+    input {
+      flex-basis: 50%;
+    }
+  }
+
+  .app-container-main {
+    display: flex;
+
+    .app-todos {
+      flex: 3;
+      border: 1px solid;
+      background-color: aqua;
+    }
+
+    .app-todolist {
+      flex: 1;
+      border: 1px solid;
+      background-color: aqua;
+    } 
+  }
 }
 
-.app-todos {
-  flex: 3;
-  border: 1px solid;
-  background-color: aqua;
-}
-
-.app-todolist {
-  flex: 1;
-  border: 1px solid;
-  background-color: aqua;
-} 

@@ -1,26 +1,26 @@
 
 <div class="todos-container">
-
   <h3 class="todos-header">ToDos List</h3>
-
-    <div class="todos-row">
+    <!-- <div class="todos-row">
       <label for="name">Name:</label>
       <input type="text" id="name">    
-    </div>      
-
+    </div>       -->
 </div>      
 
-<div>
-<p *ngIf="data && data.todos.length < 1 && ! isFetching">No posts available!</p>
-<ul *ngIf="data && data.todos.length >= 1 && ! isFetching">
-  <li class="list-group-item" *ngFor="let todo of data.todos">
-    <!-- <p>todo.title = {{ todo.title}}</p> -->
-    <app-todotile [todo]="todo"></app-todotile>
-  </li>
-</ul>
+<div class="todos-title-container">
+  <p *ngIf="data && data.todos.length < 1 && isFetching">No posts available!</p>
+  <ul *ngIf="data && data.todos.length >= 1 && ! isFetching">
+    <li class="list-group-item" *ngFor="let todo of data.todos">    
+      <app-todotile [todo]="todo" (todoTitleClick)="onTodoTitleSelected($event)"></app-todotile>
+    </li>
+  </ul>
 </div>
 
-
+<div id="todos-add">            
+  <a href="#" (click)="onAddTodo()">Add Todo</a>
+  <input type="text" id="name" [(ngModel)]="newTodo">
+</div>
+<!-- 
 <button type="button" class="btn btn-primary" (click)="getToDos()">Load</button>
 
   <div class="row">
@@ -36,19 +36,7 @@
             </div>
           </div>
         </li>
-      </ul>
-      <!-- <p>data is ok</p>
-        <li class="list-group-item" *ngFor="let todo of data.todos">
-          <p>in loop</p>
-          <p>todo.title = {{ todo.title}}</p>
-          <p>items.count {{ todo.items.length }}</p>
-        </li>
-      </ul>
-      <p *ngIf="isFetching && ! error">Loading...</p>
-      <div class="alert alert-danger" *ngIf="error">
-        <h1>An Error Occurred!</h1>
-        <p>{{ error }}</p>
-      </div> -->
+      </ul>      
 
     </div>
-  </div>
+  </div> -->

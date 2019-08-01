@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToDoModel } from './common/todos.model';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+
+  onTodoTitleSelected(todo: ToDoModel) {
+    console.log("[AppComponent:onTodoTitleSelected] todo=", JSON.stringify(todo, undefined, 2));
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ToDoModel } from '../common/todos.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { ToDoModel } from '../common/todos.model';
 })
 export class ToDoTileComponent implements OnInit {
   @Input() todo: ToDoModel;
+  @Output() todoTitleClick = new EventEmitter<ToDoModel>(); 
 
   constructor() { }
 
@@ -21,6 +22,17 @@ export class ToDoTileComponent implements OnInit {
   }
 
   getComplated() {
-    
+    let completed = 0;
+    this.todo.items.forEach(item => {
+      if (item.isCompleted) {
+        completed++;
+      }
+    });
+    return completed;
+  }
+
+  onSelect() {
+    console.log("[ToDoTileComponent:onSelect] is called, title:", this.todo.title);
+    this.todoTitleClick.emit(this.todo);
   }
 }

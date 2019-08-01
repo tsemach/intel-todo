@@ -1,10 +1,15 @@
-<h1>intel ToDo Home Assignment</h1>
-
-<button type="button" class="btn btn-primary">Primary</button>
 
 <div class="app-container">  
-  <app-todos class="app-todos"></app-todos>  
-  <app-todolist class="app-todolist"></app-todolist>
+  <h1>Intel ToDo Home Assignment</h1>
+  <div class='app-container-username'> 
+    <label for="name">User Name:</label>
+    <input type="text" id="name">
+  </div>
+
+  <div class="app-container-main">
+    <app-todos class="app-todos" (todoTitleClick)="onTodoTitleSelected($event)"></app-todos>  
+    <app-todolist class="app-todolist"></app-todolist>
+  </div>
 </div>
 
 

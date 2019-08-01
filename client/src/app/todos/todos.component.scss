@@ -15,5 +15,23 @@
   input {
     flex: 1;
   }
+  
+  .todos-title-container {
+    display: flex;
+  }
 }
 
+#todos-add {
+  display: flex;  
+  a {
+    text-decoration: none; /* get rid of the underline of the anchor */
+    font-family: Arial, Helvetica, sans-serif;
+    padding: .2em 1em;
+    color: #fff;
+    background-color: #000000; 
+    margin-right: 10px;
+  }
+  input {
+    flex: 1;  /* grow and fill in the avaiable space in a row*/
+  }
+}

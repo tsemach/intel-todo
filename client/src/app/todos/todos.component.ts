@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDosService } from '../services/todos.service';
-import { ToDosModel } from '../common/todos.model';
-
+import { ToDosModel, ToDoModel } from '../common/todos.model';
 
 @Component({
   selector: 'app-todos',
@@ -9,29 +8,17 @@ import { ToDosModel } from '../common/todos.model';
   styleUrls: ['./todos.component.scss']
 })
 export class ToDosComponent implements OnInit {
+  @Output() todoTitleClick = new EventEmitter<ToDoModel>(); 
+
   data: ToDosModel;
   isFetching = false;
   error = null;
+  newTodo = null;
 
   constructor(private todosService: ToDosService) { }
 
   ngOnInit() {
     this.getToDos();
-    // this.isFetching = true;
-    // this.todosService.getToDos('tsemach@intel.com', null)
-    // .subscribe(
-    //   data => {
-    //     this.data = data;
-    //     // console.log("data =", JSON.stringify(this.data, undefined, 2))
-    //     // console.log("data.legnth =", this.data.length)
-    //     this.isFetching = false;
-    //     // this.isFetching = false;
-    //     // this.loadedPosts = posts;
-    //   },
-    //   error => {
-    //     console.log(error);
-    //     this.error = error.message;
-    //   })
   }
 
   getToDos() {    
@@ -48,5 +35,15 @@ export class ToDosComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onTodoTitleSelected(todo: ToDoModel) {
+    console.log("[ToDosComponent:onTodoTitleSelected] todo=", JSON.stringify(todo, undefined, 2));
+    this.todoTitleClick.emit(todo);
+  }
+
+  onAddTodo() {
+    console.log("onAddTodo: newTodo=", this.newTodo);
+    
   }
 }

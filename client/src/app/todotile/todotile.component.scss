@@ -3,7 +3,11 @@
   display: flex;
   justify-content: space-between;
 
+  h4 {    
+    font-size: 120%;
+  }
   .todo-title-counts-container {
+
     button {
       margin: 5px;
       border-radius: 25%;
