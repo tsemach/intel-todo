@@ -10,12 +10,11 @@ import { ToDoAddType } from './common/todo-add.type';
 })
 export class AppComponent {
   title = 'Intel ToDo';
-  
+
   data: ToDosModel;
   current: ToDoModel;
   isFetching = false;
   error = null;
-  newTodo = null;
 
   constructor(private todosService: ToDosService) { }
 
@@ -23,16 +22,16 @@ export class AppComponent {
     this.getToDos();
   }
 
-  private updateData(data: ToDosModel) {      
+  private updateData(data: ToDosModel) {
     this.isFetching = false;
     this.data = data;
     if (this.data && this.data.todos.length > 0) {
       this.current = this.data.todos[0];
     }
-    console.log("[AppComponent::updateData] data =", JSON.stringify(this.data, undefined, 2))
+    // console.log("[AppComponent::updateData] data =", JSON.stringify(this.data, undefined, 2))
   }
 
-  getToDos() {    
+  getToDos() {
     this.isFetching = true;
     this.todosService.getToDos('tsemach@intel.com', null)
     .subscribe(
@@ -56,10 +55,10 @@ export class AppComponent {
 
   onTodoTitleSelected(todo: ToDoModel) {
     this.current = todo;
-    // console.log("[AppComponent:onTodoTitleSelected] todo=", JSON.stringify(this.current, undefined, 2));
+    console.log("[AppComponent:onTodoTitleSelected] todo=", JSON.stringify(this.current, undefined, 2));
   }
 
-  onTodoAddSelected(newTodo: ToDoAddType) {    
+  onTodoAddSelected(newTodo: ToDoAddType) {
     console.log("[AppComponent:onTodoAddSelected]: newTodo enter", newTodo);
     this.todosService.addNewTodo(newTodo)
       .subscribe(

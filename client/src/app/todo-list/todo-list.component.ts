@@ -3,9 +3,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ToDoModel } from '../common/todos.model';
 
 @Component({
-  selector: 'app-todolist',
-  templateUrl: './todolist.component.html',
-  styleUrls: ['./todolist.component.scss']
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.scss']
 })
 export class ToDoListComponent implements OnInit {
   @Input() todo: ToDoModel;

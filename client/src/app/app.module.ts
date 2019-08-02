@@ -5,16 +5,20 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { ToDosComponent } from './todos/todos.component';
-import { ToDoListComponent } from './todolist/todolist.component';
+import { ToDoListComponent } from './todo-list/todo-list.component';
 import { ToDosService } from './services/todos.service';
-import { ToDoTileComponent } from './todotile/todotile.component';
+import { TodoTitleComponent } from './todo-title/todo-title.component';
+import { TodoListHeadComponent } from './todo-list/todo-list-head/todo-list-head.component';
+import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToDosComponent,
     ToDoListComponent,
-    ToDoTileComponent
+    TodoTitleComponent,
+    TodoListHeadComponent,
+    TodoListItemComponent
   ],
   imports: [
     BrowserModule,

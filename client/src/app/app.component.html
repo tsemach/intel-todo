@@ -1,19 +1,19 @@
 
-<div class="app-container">  
+<div class="app-container">
   <h1>Intel ToDo Home Assignment</h1>
-  <div class='app-container-username'> 
+  <div class='app-container-username'>
     <label for="name">User Name:</label>
     <input type="text" id="name">
   </div>
-  
-  <div class="app-container-main">    
-    <app-todos 
-      class="app-todos" 
-      [data]="data" 
+
+  <div class="app-container-main">
+    <app-todos
+      class="app-todos"
+      [data]="data"
       (todoTitleClick)="onTodoTitleSelected($event)"
-      (todoAddTodoClick)="onTodoAddSelected($event)">      
-    </app-todos>  
-    <app-todolist class="app-todolist" [todo]="current"></app-todolist>
+      (todoAddTodoClick)="onTodoAddSelected($event)">
+    </app-todos>
+    <app-todo-list class="app-todo-list" [todo]="current"></app-todo-list>
   </div>
 </div>
 

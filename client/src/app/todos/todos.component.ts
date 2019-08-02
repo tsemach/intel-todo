@@ -9,8 +9,8 @@ import { ToDoAddType } from '../common/todo-add.type';
   styleUrls: ['./todos.component.scss']
 })
 export class ToDosComponent implements OnInit {
-  @Output() todoTitleClick = new EventEmitter<ToDoModel>(); 
-  @Output() todoAddTodoClick = new EventEmitter<ToDoAddType>(); 
+  @Output() todoTitleClick = new EventEmitter<ToDoModel>();
+  @Output() todoAddTodoClick = new EventEmitter<ToDoAddType>();
 
   @Input() data: ToDosModel;
   // isFetching = false;
@@ -23,7 +23,7 @@ export class ToDosComponent implements OnInit {
     //this.getToDos();
   }
 
-  // getToDos() {    
+  // getToDos() {
   //   this.isFetching = true;
   //   this.todosService.getToDos('tsemach@intel.com', null)
   //   .subscribe(
@@ -40,7 +40,7 @@ export class ToDosComponent implements OnInit {
   // }
 
   onTodoTitleSelected(todo: ToDoModel) {
-    console.log("[ToDosComponent:onTodoTitleSelected] todo=", JSON.stringify(todo, undefined, 2));
+    // console.log("[ToDosComponent:onTodoTitleSelected] todo=", JSON.stringify(todo, undefined, 2));
     this.todoTitleClick.emit(todo);
   }
 
