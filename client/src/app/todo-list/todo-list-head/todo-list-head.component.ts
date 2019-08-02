@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TodoListHeadComponent implements OnInit {
   @Input() title: string;
+  @Input() count: string;
 
   constructor() { }
 
