@@ -16,13 +16,14 @@ export class AppComponent {
 
   data: ToDosModel;
   current: ToDoModel;
+  username: string = '';
   isFetching = false;
   error = null;
 
   constructor(private todosService: ToDosService) { }
 
   ngOnInit() {
-    this.getToDos();
+    // this.getToDos();
   }
 
   private updateData(data: ToDosModel) {
@@ -32,20 +33,31 @@ export class AppComponent {
       this.current = this.data.todos[0];
     }
     console.log("[AppComponent::updateData] data =", JSON.stringify(this.data, undefined, 2))
+
+    return data;
   }
 
-  getToDos() {
+  getToDos(username: string) {
     this.isFetching = true;
-    this.todosService.getToDos('tsemach@intel.com', null)
+    this.todosService.getToDos(username, null)
     .subscribe(
-      data => {
-        this.updateData(data);
+      data => {        
+        return this.updateData(data);
       },
       error => {
         this.error = error.message;
         console.log(error);
       }
     );
+  }
+
+  onUsername(event: KeyboardEvent) {    
+    if (event.key === 'Enter') {      
+      console.log(event.target['value']);
+      this.username = event.target['value'];
+      console.log('username=', this.username);
+      this.getToDos(this.username); 
+    }
   }
 
   onTodoTitleSelected(todo: ToDoModel) {

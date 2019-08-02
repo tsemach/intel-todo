@@ -31,7 +31,7 @@ export class ToDosService {
    * @param isReady a subject where notify the world about incoming data
    */
   getToDos(username: string, isReady: Subject<string>) {
-    const url = this.base + '/v1/todos?username=tsemach@intel.com';
+    const url = this.base + `/v1/todos?username=${username}`;
 
     return this.http
       .get(url)

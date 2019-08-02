@@ -3,10 +3,11 @@
   <h1>Intel ToDo Home Assignment</h1>
   <div class='app-container-username'>
     <label for="name">User Name:</label>
-    <input type="text" id="name">
+    <input type="text" [value]="username" (keyup)="onUsername($event)">
   </div>
 
-  <div class="app-container-main">
+  <p *ngIf="!username">Please add a username</p>
+  <div *ngIf="username" class="app-container-main">
     <app-todos
       class="app-todos"
       [data]="data"
