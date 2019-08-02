@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 // import { ToDosService } from '../services/todos.service';
 import { ToDosModel, ToDoModel } from '../common/todos.model';
+import { ToDoAddType } from '../common/todo-add.type';
 
 @Component({
   selector: 'app-todos',
@@ -9,6 +10,7 @@ import { ToDosModel, ToDoModel } from '../common/todos.model';
 })
 export class ToDosComponent implements OnInit {
   @Output() todoTitleClick = new EventEmitter<ToDoModel>(); 
+  @Output() todoAddTodoClick = new EventEmitter<ToDoAddType>(); 
 
   @Input() data: ToDosModel;
   // isFetching = false;
@@ -44,6 +46,6 @@ export class ToDosComponent implements OnInit {
 
   onAddTodo() {
     console.log("onAddTodo: newTodo=", this.newTodo);
-    
+    this.todoAddTodoClick.emit({_id: this.data._id, title: this.newTodo})
   }
 }

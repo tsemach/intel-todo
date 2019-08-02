@@ -7,7 +7,12 @@
   </div>
   
   <div class="app-container-main">    
-    <app-todos class="app-todos" [data]="data" (todoTitleClick)="onTodoTitleSelected($event)"></app-todos>  
+    <app-todos 
+      class="app-todos" 
+      [data]="data" 
+      (todoTitleClick)="onTodoTitleSelected($event)"
+      (todoAddTodoClick)="onTodoAddSelected($event)">      
+    </app-todos>  
     <app-todolist class="app-todolist" [todo]="current"></app-todolist>
   </div>
 </div>
