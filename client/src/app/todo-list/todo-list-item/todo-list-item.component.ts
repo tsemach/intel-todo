@@ -17,21 +17,36 @@ export class TodoListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  onItemChange(header: string, isCompleted: boolean) {
+    this.todoItemEditClick.emit({
+      _id: '',
+      _object_id: '',
+      _item_id: this.item._id,
+      header,
+      isCompleted,
+      index: this.index
+    });
+  }
+
   onKeydown(event) {
     if (event.key === "Enter") {
       // console.log(event);
       console.log("[TodoListItemComponent:onKeydown]", event.target.value);
       console.log("[TodoListItemComponent:onKeydown] item=", {index: this.index, ...this.item});
-      this.todoItemEditClick.emit({
-        _id: '',
-        _object_id: '',
-        _item_id: this.item._id,
-        new_header: event.target.value,
-        old_header: this.item.header,
-        isCompleted: this.item.isCompleted,
-        index: this.index
-      });
+      this.onItemChange(event.target.value, this.item.isCompleted);
+      // this.todoItemEditClick.emit({
+      //   _id: '',
+      //   _object_id: '',
+      //   _item_id: this.item._id,
+      //   header: event.target.value,
+      //   isCompleted: this.item.isCompleted,
+      //   index: this.index
+      // });
     }
   }
 
+  onCompletedClick() {
+    console.log("[TodoListItemComponent:onCompletedClick] isCompleted:", this.item.isCompleted);
+    this.onItemChange(this.item.header, this.item.isCompleted);
+  }
 }

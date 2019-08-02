@@ -59,7 +59,10 @@ class ToDos {
         }
       },
       {
-        "$set": { "todos.$[outer].items.$[inner].header": data.new_header }
+        "$set": {
+          "todos.$[outer].items.$[inner].header": data.header,
+          "todos.$[outer].items.$[inner].isCompleted": data.isCompleted
+        },
       },
       {
         "arrayFilters": [{ "outer._id": data._object_id},{ "inner._id": data._item_id }]

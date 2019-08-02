@@ -1,11 +1,13 @@
 <div class="todo-list-head-container">
 
   <div id="div-completed">
-    <input type="checkbox" [checked]="item.isCompleted">
+    <input type="checkbox" [(ngModel)]="item.isCompleted" (change)="onCompletedClick()">
   </div>
 
   <div id="div-header">
-    <input [value]="item.header" (keyup)="onKeydown($event)">
+    <input *ngIf="item.isCompleted" appLineThrough [value]="item.header" (keyup)="onKeydown($event)">
+    <input *ngIf="!item.isCompleted" [value]="item.header" (keyup)="onKeydown($event)">
+
   </div>
 
 </div>

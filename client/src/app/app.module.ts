@@ -10,6 +10,7 @@ import { ToDosService } from './services/todos.service';
 import { TodoTitleComponent } from './todo-title/todo-title.component';
 import { TodoListHeadComponent } from './todo-list/todo-list-head/todo-list-head.component';
 import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
+import { LineThroughDirective } from './directives/line-through.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item
     ToDoListComponent,
     TodoTitleComponent,
     TodoListHeadComponent,
-    TodoListItemComponent
+    TodoListItemComponent,
+    LineThroughDirective
   ],
   imports: [
     BrowserModule,

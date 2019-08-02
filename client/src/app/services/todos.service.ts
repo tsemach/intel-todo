@@ -93,7 +93,7 @@ export class ToDosService {
    * {
    *  index: 0
    *  isCompleted: false
-   *  new_header: "vvvvtttttttttt"
+   *  header: "vvvvtttttttttt"
    *  old_header: "vvvvvvvvvvvvvvvvvvvv"
    * _id: "5d433466cc2fd3121814e97e"
    * _item_id: "5d4455afab72db2c6e697324"
