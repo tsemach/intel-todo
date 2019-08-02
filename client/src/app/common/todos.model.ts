@@ -3,23 +3,23 @@
 //   _id: string;
 //   displayName: string;
 //   username: string;
-//   todos: Array<{    
-//       title: string;      
+//   todos: Array<{
+//       title: string;
 //       items: Array<{
 //         header: string;
 //         isCompleted: boolean;
 //       }>
 //     }
-//   >      
+//   >
 // }
-export interface ToDoItemModel {        
+export interface ToDoItemModel {
   header: string;
   isCompleted: boolean;
 }
 
-export interface ToDoModel {      
-  title: string;      
-  items: Array<ToDoItemModel>        
+export interface ToDoModel {
+  title: string;
+  items: Array<ToDoItemModel>
 }
 
 export interface ToDosModel {
@@ -27,14 +27,6 @@ export interface ToDosModel {
   displayName: string;
   username: string;
   todos: Array<ToDoModel>;
-  // todos: Array<{    
-  //     title: string;      
-  //     items: Array<{
-  //       header: string;
-  //       isCompleted: boolean;
-  //     }>
-  //   }
-  // >      
 }
 
 

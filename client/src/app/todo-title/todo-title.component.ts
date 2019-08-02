@@ -21,7 +21,7 @@ export class TodoTitleComponent implements OnInit {
 
   }
 
-  getComplated() {
+  getCompleted() {
     let completed = 0;
     this.todo.items.forEach(item => {
       if (item.isCompleted) {

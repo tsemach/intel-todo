@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ToDoItemModel} from "../../common/todos.model";
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {ToDoItemModel, ToDoModel} from "../../common/todos.model";
 
 @Component({
   selector: 'app-todo-list-item',
@@ -8,10 +8,19 @@ import {ToDoItemModel} from "../../common/todos.model";
 })
 export class TodoListItemComponent implements OnInit {
   @Input() item: ToDoItemModel;
+  @Output() todoItemEditClick = new EventEmitter<ToDoModel>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onKeydown(event) {
+    if (event.key === "Enter") {
+      // console.log(event);
+      console.log("[TodoListItemComponent:onKeydown]", event.target.value);
+
+    }
   }
 
 }

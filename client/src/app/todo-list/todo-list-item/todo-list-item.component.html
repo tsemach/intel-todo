@@ -1,11 +1,14 @@
 <div class="todo-list-head-container">
 
-  <div id="div-input">
+  <div id="div-completed">
     <input type="checkbox" [checked]="item.isCompleted">
   </div>
 
-  <div id="div-span">
-    <span>header = {{ item.header}}</span>
+  <div id="div-header">
+    <!--<p>header = {{ item.header}}</p>-->
+    <!--<span>header = {{ item.header}}</span>-->
+
+    <input [value]="item.header" (keydown)="onKeydown($event)">
   </div>
 
 </div>

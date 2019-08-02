@@ -7,22 +7,30 @@
   padding: 0;
   margin: 0;
 
-  #div-input {
+  #div-completed {
     border-right: 1px solid;
-    margin: 0 0 0 10px;
+    margin: 0 0 0 0;
     padding: 0 10px 0 10px;
+
+    input {
+      border: 1px solid;
+    }
   }
 
-  #div-span {
+  #div-header {
     border-right: none;
-    margin-left: 10px;
+    padding-right: 0;
+    display: flex;
+    flex: 1;
+
+    input {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      flex: 1;
+    }
   }
 
-  input {
-    border: 1px solid;
-  }
-
-  span {
-  }
 }
 
