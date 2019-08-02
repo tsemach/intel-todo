@@ -1,5 +1,5 @@
 import createLogger from 'logging'; 
-const logger = createLogger('SanityRoute');
+const logger = createLogger('TodosRoute');
 
 import * as logger from 'logging';
 import * as express from 'express';
@@ -58,7 +58,7 @@ class TodosRoute implements Service {
       try {
         const reply = await Application.todos.addToDoItem(body)
         console.log("POST:/v1/todos/item/add reply = ", JSON.stringify(reply, undefined, 2));
-        res.json({success: true, data: reply});
+        res.json({success: reply.ok === 1, data: reply});
       }
       catch (e) {
         console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);

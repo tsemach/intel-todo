@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ToDoModel, ToDosModel } from './common/todos.model';
 import { ToDosService } from './services/todos.service';
 import { ToDoAddType } from './common/todo-add.type';
+import {ToDoAddItemType} from "./common/todo-add-item.type";
 
 @Component({
   selector: 'app-root',
@@ -63,4 +64,17 @@ export class AppComponent {
         }
       );
   }
+
+  onAddNewItem(newItem: ToDoAddItemType) {
+    console.log("[AppComponent:onAddNewItem] new item:", newItem);
+    this.todosService.addNewTodoItem(this.data._id, newItem)
+      .subscribe(
+        (data: any)  => {
+          console.log("[AppComponent:onAddNewItem] reply:", data);
+        },
+          error => {
+            console.log("[AppComponent:onAddNewItem] error:", error);
+        });
+  }
+
 }

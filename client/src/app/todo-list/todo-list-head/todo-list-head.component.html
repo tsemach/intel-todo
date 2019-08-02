@@ -1,4 +1,9 @@
-<a href="#">+ add item</a>
+
+<div id="todo-list-head-add">
+  <a href="#" (click)="onAddNewItemLink()">+ add item</a>
+  <input *ngIf="isAddNewItemEnabled" (keydown)="onAddNewItem($event)">
+</div>
+
 <div class="todo-list-head-container">
   <p>{{ title }}</p>
   <p>{{ count }} items</p>

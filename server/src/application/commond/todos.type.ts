@@ -5,6 +5,7 @@ export interface ToDoAddType {
 
 export interface ToDoAddItemType {
   _id: string;
+  _object_id: string;
   header: string;
   isCompleted: false;
 }

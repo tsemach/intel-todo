@@ -3,7 +3,11 @@
 
 <div class="todo-list-container"*ngIf="todo">
 
-  <app-todo-list-head [title]="todo.title" [count]="todo.items.length"></app-todo-list-head>
+  <app-todo-list-head
+    [title]="todo.title"
+    [count]="todo.items.length"
+    (todoListHeadAddNewItem)="todoListAddNewItem($event)">
+  </app-todo-list-head>
 
   <hr/>
 

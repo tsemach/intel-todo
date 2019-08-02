@@ -1,6 +1,6 @@
 
 // export default interface ToDosModel {
-//   _id: string;
+//   _object_id: string;
 //   displayName: string;
 //   username: string;
 //   todos: Array<{
@@ -18,6 +18,7 @@ export interface ToDoItemModel {
 }
 
 export interface ToDoModel {
+  _id: string;
   title: string;
   items: Array<ToDoItemModel>
 }

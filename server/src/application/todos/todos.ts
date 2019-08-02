@@ -25,17 +25,27 @@ class ToDos {
     );
   }
 
+  /**
+   * from: https://stackoverflow.com/questions/38751676/insert-a-new-object-into-a-sub-document-array-field-in-mongoose/38766749
+   */
   addToDoItem(data: ToDoAddItemType) {
-    data._id = "5d433466cc2fd3121814e97e";
+    // data = {
+    //   "_id": "5d433466cc2fd3121814e97e",
+    //   "_object_id": "5d442511e0d2af1169b334a5",
+    //   "header": "add new item sdvsvdsvdsdv",
+    //   "isCompleted": false
+    // }
 
-    const newTodoItem = { header: data.header, isCompleted: false};
-
-    console.log("addToDoItem, newToDoItem:", JSON.stringify(newTodoItem, undefined, 2));
-
-    return ToDosModel.findOneAndUpdate(
-      { _id: data._id },
+    logger.info("[ToDos::addToDoItem] newToDoItem:", JSON.stringify(data, undefined, 2));
+    return ToDosModel.updateMany(
+      {_id: data._id, 'todos._id': data._object_id},
       {
-        $push: { items: newTodoItem }
+        $push: {
+          'todos.$.items': {
+            header: data.header,
+            isCompleted: data.isCompleted
+          }
+        }
       }
     );
   }

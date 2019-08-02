@@ -7,7 +7,9 @@
   <p *ngIf="data && data.todos.length < 1">No posts available!</p>
   <ul *ngIf="data && data.todos.length >= 1">
     <li class="list-group-item todos-title" *ngFor="let todo of data.todos">
-      <app-todo-title [todo]="todo" (todoTitleClick)="onTodoTitleSelected($event)"></app-todo-title>
+      <app-todo-title
+        [todo]="todo"
+        (todoTitleClick)="onTodoTitleSelected($event)"></app-todo-title>
     </li>
   </ul>
 </div>
@@ -16,23 +18,3 @@
   <a href="#" (click)="onAddTodo()">Add Todo</a>
   <input type="text" id="name" [(ngModel)]="newTodo">
 </div>
-<!--
-<button type="button" class="btn btn-primary" (click)="getToDos()">Load</button>
-
-  <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <p *ngIf="data && data.todos.length < 1 && ! isFetching">No posts available!</p>
-      <p *ngIf="data">data.length >= 0: {{ data.todos.length >= 1 }} </p>
-      <ul *ngIf="data && data.todos.length >= 1 && ! isFetching">
-        <li class="list-group-item" *ngFor="let todo of data.todos">
-          <p>todo.title = {{ todo.title}}</p>
-          <div class="card">
-            <div class="card-body">
-              <p>todo.title = {{ todo.title}}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
-
-    </div>
-  </div> -->

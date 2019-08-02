@@ -13,7 +13,11 @@
       (todoTitleClick)="onTodoTitleSelected($event)"
       (todoAddTodoClick)="onTodoAddSelected($event)">
     </app-todos>
-    <app-todo-list class="app-todo-list" [todo]="current"></app-todo-list>
+    <app-todo-list
+      class="app-todo-list"
+      [todo]="current"
+      (todoAddNewItem)="onAddNewItem($event)">
+    </app-todo-list>
   </div>
 </div>
 
