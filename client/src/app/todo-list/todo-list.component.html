@@ -11,8 +11,11 @@
 
   <hr/>
 
-  <ul *ngFor="let item of todo.items">
-    <app-todo-list-item [item]="item"></app-todo-list-item>
+  <ul *ngFor="let item of todo.items; let i = index">
+    <app-todo-list-item
+      [item]="item" [index]="i"
+      (todoItemEditClick)="todoListEditItem($event)">
+    </app-todo-list-item>
   </ul>
 
 </div>

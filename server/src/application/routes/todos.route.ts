@@ -25,7 +25,7 @@ class TodosRoute implements Service {
         logger.info('GET:/v1/todos - got username = ', username);
 
         const reply = await Application.todos.getToDos(username);
-        logger.info("ToDos: ", JSON.stringify(reply, undefined, 2));
+        logger.info("GET:/v1/todos  - ToDos: ", JSON.stringify(reply, undefined, 2));
         res.json({success: true, data: reply});
 
         return;
@@ -52,12 +52,12 @@ class TodosRoute implements Service {
     // --------------------------------------------------------------------------
 
     // --------------------------------------------------------------------------
-    router.post('/item/add', async (req: express.Request, res: express.Response) => {
+    router.post('/item', async (req: express.Request, res: express.Response) => {
       const { body } = req;
-      logger.info("POST:/v1/todos/item/add - get todo\n" + JSON.stringify(body, undefined, 2));
+      logger.info("POST:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
       try {
         const reply = await Application.todos.addToDoItem(body)
-        console.log("POST:/v1/todos/item/add reply = ", JSON.stringify(reply, undefined, 2));
+        console.log("POST:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
         res.json({success: reply.ok === 1, data: reply});
       }
       catch (e) {
@@ -67,6 +67,21 @@ class TodosRoute implements Service {
     });
     // --------------------------------------------------------------------------
 
+    // --------------------------------------------------------------------------
+    router.put('/item', async (req: express.Request, res: express.Response) => {
+      const { body } = req;
+      logger.info("PUT:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
+      try {
+        const reply = await Application.todos.editToDoItem(body)
+        console.log("PUT:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
+        res.json({success: reply.ok === 1, data: reply});
+      }
+      catch (e) {
+        console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
+        res.json({success: false, data: {error: e}});
+      }
+    });
+    // --------------------------------------------------------------------------
     return router;
   }
 

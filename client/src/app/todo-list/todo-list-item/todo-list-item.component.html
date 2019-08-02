@@ -5,10 +5,7 @@
   </div>
 
   <div id="div-header">
-    <!--<p>header = {{ item.header}}</p>-->
-    <!--<span>header = {{ item.header}}</span>-->
-
-    <input [value]="item.header" (keydown)="onKeydown($event)">
+    <input [value]="item.header" (keyup)="onKeydown($event)">
   </div>
 
 </div>

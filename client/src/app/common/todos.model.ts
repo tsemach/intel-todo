@@ -13,6 +13,7 @@
 //   >
 // }
 export interface ToDoItemModel {
+  _id: string;
   header: string;
   isCompleted: boolean;
 }

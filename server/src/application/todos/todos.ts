@@ -2,7 +2,7 @@ import createLogger from 'logging';
 const logger = createLogger('ToDos');
 
 import ToDosModel from '../models/intel-todos';
-import {ToDoAddItemType, ToDoAddType} from '../commond/todos.type';
+import {ToDoAddItemType, ToDoAddType, ToDoEditedType} from '../commond/todos.type';
 
 class ToDos {
   constructor() {
@@ -29,13 +29,6 @@ class ToDos {
    * from: https://stackoverflow.com/questions/38751676/insert-a-new-object-into-a-sub-document-array-field-in-mongoose/38766749
    */
   addToDoItem(data: ToDoAddItemType) {
-    // data = {
-    //   "_id": "5d433466cc2fd3121814e97e",
-    //   "_object_id": "5d442511e0d2af1169b334a5",
-    //   "header": "add new item sdvsvdsvdsdv",
-    //   "isCompleted": false
-    // }
-
     logger.info("[ToDos::addToDoItem] newToDoItem:", JSON.stringify(data, undefined, 2));
     return ToDosModel.updateMany(
       {_id: data._id, 'todos._id': data._object_id},
@@ -48,6 +41,30 @@ class ToDos {
         }
       }
     );
+  }
+
+  /**
+   * from: https://stackoverflow.com/questions/23577123/updating-a-nested-array-with-mongodb
+   */
+  editToDoItem(data: ToDoEditedType) {
+    logger.info("[ToDos::editToDoItem] editToDoItem:", JSON.stringify(data, undefined, 2));
+
+    return ToDosModel.updateOne(
+      {
+        "_id": data._id,
+        "todos": {
+          "$elemMatch": {
+            "_id": data._object_id, "items._id": data._item_id
+          }
+        }
+      },
+      {
+        "$set": { "todos.$[outer].items.$[inner].header": data.new_header }
+      },
+      {
+        "arrayFilters": [{ "outer._id": data._object_id},{ "inner._id": data._item_id }]
+      }
+    )
   }
 
 }

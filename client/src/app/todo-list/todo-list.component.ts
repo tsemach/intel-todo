@@ -2,6 +2,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { ToDoModel } from '../common/todos.model';
 import {ToDoAddItemType} from "../common/todo-add-item.type";
+import {ToDoEditedType} from "../common/todo-edit-item.type";
 
 @Component({
   selector: 'app-todo-list',
@@ -11,6 +12,7 @@ import {ToDoAddItemType} from "../common/todo-add-item.type";
 export class ToDoListComponent implements OnInit {
   @Input() todo: ToDoModel;
   @Output() todoAddNewItem = new EventEmitter<ToDoAddItemType>();
+  @Output() todoEditItem = new EventEmitter<ToDoEditedType>();
 
   constructor() { }
 
@@ -23,5 +25,12 @@ export class ToDoListComponent implements OnInit {
     console.log("[ToDoListComponent:todoListAddNewItem]: newItem =", newItem);
 
     this.todoAddNewItem.emit(newItem)
+  }
+
+  todoListEditItem(editItem: ToDoEditedType) {
+    editItem._object_id = this.todo._id;
+
+    console.log('[ToDoListComponent::todoListEditItem] editItem=', editItem);
+    this.todoEditItem.emit(editItem);
   }
 }

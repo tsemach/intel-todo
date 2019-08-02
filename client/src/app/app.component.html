@@ -16,7 +16,8 @@
     <app-todo-list
       class="app-todo-list"
       [todo]="current"
-      (todoAddNewItem)="onAddNewItem($event)">
+      (todoAddNewItem)="onAddNewItem($event)"
+      (todoEditItem)="onEditItem($event)">
     </app-todo-list>
   </div>
 </div>
