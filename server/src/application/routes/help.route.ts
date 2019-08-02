@@ -30,6 +30,12 @@ description: add todo to user
 method: GET: /v1/todos/add
 example: curl -X POST http://localhost:3000/v1/todos/add -H "Content-Type: application/json" -d '{"_id": "5d433466cc2fd3121814e97e", "title": "add new todo"}'
 -----------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------
+description: add todo to user
+method: GET: /v1/todos/item/add
+example: curl -X POST http://localhost:3000/v1/todos/item/add -H "Content-Type: application/json" -d '{"_id": "5d442511e0d2af1169b334a5", "header": "add new item", "isCompleted": "false"}'
+-----------------------------------------------------------------------------------
 `
       );
     });

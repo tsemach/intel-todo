@@ -36,21 +36,34 @@ class TodosRoute implements Service {
     // --------------------------------------------------------------------------
     
     // --------------------------------------------------------------------------
-    /**
-     * 
-     */
-    router.post('/add', async (req: express.Request, res: express.Response) => {      
+    router.post('/add', async (req: express.Request, res: express.Response) => {
       const { body } = req;
       logger.info("POST:/v1/todos/add - get todo\n" + JSON.stringify(body, undefined, 2));
       try {
         const reply = await Application.todos.addToDo(body);
-        console.log("REPLT: = ", JSON.stringify(reply, undefined, 2));
+        logger.info("[POST:/v1/todos/add] reply = ", JSON.stringify(reply, undefined, 2));
         res.json({success: true, data: reply});
       }
       catch (e) {
-        console.log("POST:/v1/todos/add - ERROR:", e, "\n", e.stack);
+        logger.error("POST:/v1/todos/add - ERROR:", e, "\n", e.stack);
         res.json({success: false, data: {error: e}});
       }      
+    });
+    // --------------------------------------------------------------------------
+
+    // --------------------------------------------------------------------------
+    router.post('/item/add', async (req: express.Request, res: express.Response) => {
+      const { body } = req;
+      logger.info("POST:/v1/todos/item/add - get todo\n" + JSON.stringify(body, undefined, 2));
+      try {
+        const reply = await Application.todos.addToDoItem(body)
+        console.log("POST:/v1/todos/item/add reply = ", JSON.stringify(reply, undefined, 2));
+        res.json({success: true, data: reply});
+      }
+      catch (e) {
+        console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
+        res.json({success: false, data: {error: e}});
+      }
     });
     // --------------------------------------------------------------------------
 
