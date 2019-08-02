@@ -6,6 +6,7 @@
   border: 1px solid;
   padding: 0;
   margin: 0;
+  font-size: 18px;
 
   #div-completed {
     border-right: 1px solid;
@@ -30,6 +31,21 @@
       margin: 0;
       flex: 1;
     }
+  }
+
+  #div-trash {
+    a {
+      color: #666666;
+      padding: 0 10px 0 10px;
+      margin: 0;
+      
+      &:active { 
+        color: pink;
+      }
+    }
+      
+
+    
   }
 
 }

@@ -18,3 +18,12 @@ export interface ToDoEditedType {
   isCompleted: boolean;
   index: number;
 }
+
+export interface ToDoDeleteType {
+  _id: string;
+  _object_id: string;
+  _item_id: string;
+  // header: string;
+  // isCompleted: boolean;
+  index: number;
+}

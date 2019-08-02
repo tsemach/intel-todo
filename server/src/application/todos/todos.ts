@@ -2,7 +2,7 @@ import createLogger from 'logging';
 const logger = createLogger('ToDos');
 
 import ToDosModel from '../models/intel-todos';
-import {ToDoAddItemType, ToDoAddType, ToDoEditedType} from '../commond/todos.type';
+import {ToDoAddItemType, ToDoAddType, ToDoEditedType, ToDoDeleteType} from '../commond/todos.type';
 
 class ToDos {
   constructor() {
@@ -67,7 +67,29 @@ class ToDos {
       {
         "arrayFilters": [{ "outer._id": data._object_id},{ "inner._id": data._item_id }]
       }
-    )
+    );
+  }
+
+  deleteToDoItem(data: ToDoDeleteType) {
+    logger.info("[ToDos::deleteToDoItem] data:", JSON.stringify(data, undefined, 2));
+    return ToDosModel.updateOne(
+      {
+        "_id": data._id,
+        "todos": {
+          "$elemMatch": {
+            "_id": data._object_id
+          }
+        }
+      },
+      {
+        "$pull": {
+          "todos.$[outer].items": {_id: data._item_id},          
+        },
+      },
+      {
+        "arrayFilters": [{ "outer._id": data._object_id}]
+      }
+    );    
   }
 
 }

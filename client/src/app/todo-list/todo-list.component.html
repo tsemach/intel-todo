@@ -14,7 +14,8 @@
   <ul *ngFor="let item of todo.items; let i = index">
     <app-todo-list-item
       [item]="item" [index]="i"
-      (todoItemEditClick)="todoListEditItem($event)">
+      (todoItemEditClick)="todoListEditItem($event)"
+      (todoItemDeleteClick)="todoListDeleteItem($event)">
     </app-todo-list-item>
   </ul>
 

@@ -8,6 +8,7 @@ import { ToDosModel } from '../common/todos.model';
 import { ToDoAddType } from '../common/todo-add.type';
 import {ToDoAddItemType} from "../common/todo-add-item.type";
 import {ToDoEditedType} from "../common/todo-edit-item.type";
+import {ToDoDeleteType} from "../common/todo-delete-item.type";
 
 @Injectable({providedIn: 'root'})
 export class ToDosService {
@@ -117,6 +118,38 @@ export class ToDosService {
           console.log("[AppComponent:editTodoItem] error:", error);
         });
   }
+
+  /**
+   * {
+   *  index: 0
+   *  isCompleted: false
+   *  header: "vvvvtttttttttt"
+   *  old_header: "vvvvvvvvvvvvvvvvvvvv"
+   * _id: "5d433466cc2fd3121814e97e"
+   * _item_id: "5d4455afab72db2c6e697324"
+   * _object_id: "5d442d256e17391883bf8aa3"
+   **/
+  deleteTodoItem(item: ToDoDeleteType) {
+    console.log("QQQQQQQQQQQQQQQQ: ", item)
+    const url = this.base 
+      + '/v1/todos/item' 
+      + `?_id=${item._id}&_object_id=${item._object_id}&_item_id=${item._item_id}&index=${item.index}`;
+
+    console.log("IN SERVIVCE PUT addNewTodoItem:", item);
+    url
+    return this.http
+      .delete<{success: string, data: any}>(
+        url,        
+        this.httpOptions
+      )
+      .subscribe(
+        (data: any)  => {
+          console.log("[AppComponent:editTodoItem] reply:", data);
+        },
+        error => {
+          console.log("[AppComponent:editTodoItem] error:", error);
+        });
+  }  
 }
 
 

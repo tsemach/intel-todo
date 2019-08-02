@@ -9,5 +9,8 @@
     <input *ngIf="!item.isCompleted" [value]="item.header" (keyup)="onKeydown($event)">
 
   </div>
+  <div id="div-trash">
+    <a href="#" class="fa fa-trash" (click)="onItemDelete()"></a>
+  </div>
 
 </div>

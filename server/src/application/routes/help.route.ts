@@ -27,14 +27,20 @@ example: curl http://localhost:3000/v1/todos
 
 -----------------------------------------------------------------------------------
 description: add todo to user
-method: GET: /v1/todos/add
-example: curl -X POST http://localhost:3000/v1/todos/add -H "Content-Type: application/json" -d '{"_id": "5d433466cc2fd3121814e97e", "title": "add new todo"}'
+method: POST: /v1/todos/add
+example: curl -X POST http://localhost:3000/v1/todos -H "Content-Type: application/json" -d '{"_id": "5d433466cc2fd3121814e97e", "title": "add new todo"}'
 -----------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------
 description: add todo to user
-method: GET: /v1/todos/item
-example: curl -X POST http://localhost:3000/v1/todos/item/add -H "Content-Type: application/json" -d '{"_id": "5d433466cc2fd3121814e97e", "_object_id": "5d442511e0d2af1169b334a5", "header": "add new item", "isCompleted": "false"}'
+method: PUT: /v1/todos/item
+example: curl -X PUT http://localhost:3000/v1/todos/item -H "Content-Type: application/json" -d '{"_id": "5d433466cc2fd3121814e97e", "_object_id": "5d442511e0d2af1169b334a5", "header": "add new item", "isCompleted": "false"}'
+-----------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------
+description: add todo to user
+method: DELETE: /v1/todos/item
+example: curl -X DELETE http://localhost:3000/v1/todos/item -H "Content-Type: application/json" -d '{"_id": "5d433466cc2fd3121814e97e", "_object_id": "5d442511e0d2af1169b334a5", "index": "2"}'
 -----------------------------------------------------------------------------------
 `
       );

@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { ToDoModel, ToDosModel } from './common/todos.model';
 import { ToDosService } from './services/todos.service';
 import { ToDoAddType } from './common/todo-add.type';
-import {ToDoAddItemType} from "./common/todo-add-item.type";
-import {ToDoEditedType} from "./common/todo-edit-item.type";
+import { ToDoAddItemType } from "./common/todo-add-item.type";
+import { ToDoEditedType } from "./common/todo-edit-item.type";
+import { ToDoDeleteType } from "./common/todo-delete-item.type";
 
 @Component({
   selector: 'app-root',
@@ -73,8 +74,16 @@ export class AppComponent {
 
   onEditItem(editItem: ToDoEditedType) {
     editItem._id = this.data._id;
+    
     console.log("[AppComponent:onEditItem] edit item:", editItem);
     this.todosService.editTodoItem(editItem);
+  }
+
+  onDeleteItem(deleteItem: ToDoDeleteType) {
+    deleteItem._id = this.data._id;
+
+    console.log("[AppComponent:onEditItem] edit item:", deleteItem);
+    this.todosService.deleteTodoItem(deleteItem);
   }
 
 }

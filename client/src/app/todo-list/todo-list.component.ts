@@ -3,6 +3,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { ToDoModel } from '../common/todos.model';
 import {ToDoAddItemType} from "../common/todo-add-item.type";
 import {ToDoEditedType} from "../common/todo-edit-item.type";
+import {ToDoDeleteType} from "../common/todo-delete-item.type";
 
 @Component({
   selector: 'app-todo-list',
@@ -13,6 +14,7 @@ export class ToDoListComponent implements OnInit {
   @Input() todo: ToDoModel;
   @Output() todoAddNewItem = new EventEmitter<ToDoAddItemType>();
   @Output() todoEditItem = new EventEmitter<ToDoEditedType>();
+  @Output() todoDeleteItem = new EventEmitter<ToDoDeleteType>();
 
   constructor() { }
 
@@ -32,5 +34,12 @@ export class ToDoListComponent implements OnInit {
 
     console.log('[ToDoListComponent::todoListEditItem] editItem=', editItem);
     this.todoEditItem.emit(editItem);
+  }
+
+  todoListDeleteItem(deleteItem: ToDoDeleteType) {
+    deleteItem._object_id = this.todo._id;
+
+    console.log('[ToDoListComponent::todoListDeleteItem] deleteItem=', deleteItem);
+    this.todoDeleteItem.emit(deleteItem);
   }
 }
