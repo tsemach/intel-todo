@@ -13,34 +13,12 @@ export class ToDosComponent implements OnInit {
   @Output() todoAddTodoClick = new EventEmitter<ToDoAddType>();
 
   @Input() data: ToDosModel;
-  // isFetching = false;
-  // error = null;
   newTodo = null;
 
-  // constructor(private todosService: ToDosService) { }
-
   ngOnInit() {
-    //this.getToDos();
   }
 
-  // getToDos() {
-  //   this.isFetching = true;
-  //   this.todosService.getToDos('tsemach@intel.com', null)
-  //   .subscribe(
-  //     data => {
-  //       this.isFetching = false;
-  //       this.data = data;
-  //       console.log("[ToDosComponent] data =", JSON.stringify(this.data, undefined, 2))
-  //     },
-  //     error => {
-  //       this.error = error.message;
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
   onTodoTitleSelected(todo: ToDoModel) {
-    // console.log("[ToDosComponent:onTodoTitleSelected] todo=", JSON.stringify(todo, undefined, 2));
     this.todoTitleClick.emit(todo);
   }
 
@@ -48,5 +26,11 @@ export class ToDosComponent implements OnInit {
     console.log("[ToDosComponent::onAddTodo] newTodo =", this.newTodo);
     this.todoAddTodoClick.emit({_id: this.data._id, title: this.newTodo})
     this.newTodo = null;
+  }
+
+  onNewTodoKeydown(event: KeyboardEvent) {    
+    if (event.key === "Enter") {
+      this.onAddTodo();
+    }
   }
 }

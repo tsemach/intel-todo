@@ -16,5 +16,5 @@
 
 <div id="todos-add">
   <a href="#" (click)="onAddTodo()">Add Todo</a>
-  <input type="text" id="name" [(ngModel)]="newTodo">
+  <input type="text" id="name" [(ngModel)]="newTodo" (keyup)=onNewTodoKeydown($event)>
 </div>
