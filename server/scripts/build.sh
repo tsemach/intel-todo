@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export NODE_ENV=production
+
 if [ ! -f Dockerfile ]; then
 	echo "Dockerfile is not exist, move to the server dirctory"
 
