@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  host: 'http://tsemach.herokuapp.com'
+  host: 'http://localhost:3000'
 };

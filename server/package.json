@@ -8,7 +8,8 @@
     "build": "tsc -sourcemap",
     "start": "node -r source-map-support/register dist/src/index.js",
     "debug": "nodemon node -r source-map-support/register dist/src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"prod": "./scripts/build.sh"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,6 @@
     "mongodb": "^3.3.0-beta2",
     "mongoose": "^5.6.7",
     "reflect-metadata": "^0.1.13",
-    "rx-txjs": "^0.2.21",
     "source-map-support": "^0.5.13"
   },
   "devDependencies": {
