@@ -49,7 +49,7 @@ class UserRoute implements Service {
         try {  
           const reply = await Application.todos.createNewUser(userName, displayName);
            logger.info('POST:/v1/user - add user, reply:', JSON.stringify(reply, undefined, 2));
-           res.json({success: true, data: reply});     
+           res.json({success: true, data: [reply]});     
         }
         catch (e) {
           logger.error("POST:/v1/user - ERROR:", e, "\n", e.stack);

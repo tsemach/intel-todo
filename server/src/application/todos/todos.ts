@@ -32,7 +32,8 @@ class ToDos {
       { _id: data._id }, 
       { 
         $push: { todos: newTodo }
-      }
+      },
+      { new: true }
     );
   }
 

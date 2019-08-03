@@ -47,5 +47,6 @@ export class ToDosComponent implements OnInit {
   onAddTodo() {
     console.log("[ToDosComponent::onAddTodo] newTodo =", this.newTodo);
     this.todoAddTodoClick.emit({_id: this.data._id, title: this.newTodo})
+    this.newTodo = null;
   }
 }

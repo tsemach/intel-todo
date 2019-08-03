@@ -33,6 +33,15 @@ export class ToDosService {
         {userName, displayName},
         this.httpOptions
       )
+      .pipe(
+        map((reply: {success: string, data: ToDosModel[]}) => {
+          if (reply.data.length >= 1) {
+            return reply.data[0];
+          }
+          return null;
+        }
+      )
+    );
   }
 
   /**
@@ -66,7 +75,7 @@ export class ToDosService {
       )
       .pipe(
         map((reply: {success: string, data: ToDosModel}) => {
-          // console.log("IN addNewTodo:", JSON.stringify(reply, undefined, 2));
+          console.log("[SERVICE] IN addNewTodo:", JSON.stringify(reply, undefined, 2));
           if (reply.data && reply.data._id === newTodo._id) {
             return reply.data;
           }

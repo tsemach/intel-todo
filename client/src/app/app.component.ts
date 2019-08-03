@@ -6,6 +6,8 @@ import { ToDoAddItemType } from "./common/todo-add-item.type";
 import { ToDoEditedType } from "./common/todo-edit-item.type";
 import { ToDoDeleteType } from "./common/todo-delete-item.type";
 import { ToDoNewUserType } from './common/todo-new-user.type';
+
+import * as _ from 'lodash';
 import * as utils from './utils';
 
 @Component({
@@ -72,6 +74,7 @@ export class AppComponent {
       .subscribe(
         (reply: any)  => {            
           console.log("[AppComponent::createNewUser] reply=", JSON.stringify(reply, undefined, 2));
+
           this.updateData(reply);
         },
         error => {
@@ -121,11 +124,9 @@ export class AppComponent {
     this.todosService.addNewTodoItem(this.data._id, newItem)
       .subscribe(
         (data: any)  => {
-          console.log("[AppComponent:onAddNewItem] RELOAD IS CALLED f:", JSON.stringify(data, undefined, 2));
+          console.log("[AppComponent:onAddNewItem] RELOAD IS CALLED f:", JSON.stringify(data, undefined, 2)); 
           this.updateData(data);
-          // this.current = null;          
-
-          // this.reload();
+          this.current = _.find(this.data.todos, { _id: newItem._object_id } );
         },
         error => {
           console.log("[AppComponent:onAddNewItem] error:", error);
