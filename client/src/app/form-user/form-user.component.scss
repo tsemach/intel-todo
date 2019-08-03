@@ -1,0 +1,37 @@
+#add-user {
+  background: #fff;
+  padding: 20px;
+  left: 0;
+  bottom: 0;
+  width: 400px;  
+}
+
+#add-user .field {
+  display: grid;  
+  grid-template-columns: 1fr 1fr;
+  // grid-template-columns: 200px 200px;
+  grid-gap: 10px;
+}
+
+#add-user label {
+  text-align: right;  
+  padding: 6px;
+}
+
+#add-user select, #add-user input {
+  margin: 4px;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+#add-user button {
+  color: #fff;
+  font-size: 2em;
+  background: #AD1457;
+  border: 0;
+  padding: 0 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  bottom: 10px;
+  left: 10px;
+}

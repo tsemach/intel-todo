@@ -46,7 +46,7 @@ export class ToDosService {
   }
 
   addNewTodo(newTodo: ToDoAddType) {
-    const url = this.base + '/v1/todos/add';
+    const url = this.base + '/v1/todos';
 
     return this.http
       .post<{success: string, data: ToDosModel}>(

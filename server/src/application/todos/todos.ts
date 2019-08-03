@@ -8,8 +8,12 @@ class ToDos {
   constructor() {
   }
 
+  createNewUser(username: string) {
+    
+  }
+
   getToDos(username: string) {
-    logger.info('goinf to get todos for username:',  username);
+    logger.info('[ToDos::getToDos] going to get todos for username:',  username);
 
     return ToDosModel.find({username});
   }

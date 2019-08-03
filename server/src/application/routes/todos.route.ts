@@ -36,12 +36,12 @@ class TodosRoute implements Service {
     // --------------------------------------------------------------------------
     
     // --------------------------------------------------------------------------
-    router.post('/add', async (req: express.Request, res: express.Response) => {
+    router.post('/', async (req: express.Request, res: express.Response) => {
       const { body } = req;
-      logger.info("POST:/v1/todos/add - get todo\n" + JSON.stringify(body, undefined, 2));
+      logger.info("POST:/v1/todos - get todo\n" + JSON.stringify(body, undefined, 2));
       try {
         const reply = await Application.todos.addToDo(body);
-        logger.info("[POST:/v1/todos/add] reply = ", JSON.stringify(reply, undefined, 2));
+        logger.info("[POST:/v1/todos] reply = ", JSON.stringify(reply, undefined, 2));
         res.json({success: true, data: reply});
       }
       catch (e) {

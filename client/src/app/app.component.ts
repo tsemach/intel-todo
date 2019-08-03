@@ -29,6 +29,7 @@ export class AppComponent {
   private updateData(data: ToDosModel) {
     this.isFetching = false;
     this.data = data;
+    this.current = null;
     if (this.data && this.data.todos.length > 0) {
       this.current = this.data.todos[0];
     }
@@ -42,13 +43,20 @@ export class AppComponent {
     this.todosService.getToDos(username, null)
     .subscribe(
       data => {        
-        return this.updateData(data);
+        const updatedData = this.updateData(data);
+        console.log("[AppComponent:getToDos] this.updateData(data) =", updatedData);
+
+        return this.updateData(updatedData );
       },
       error => {
         this.error = error.message;
         console.log(error);
       }
     );
+  }
+
+  createToDos(username: string) {
+    
   }
 
   onUsername(event: KeyboardEvent) {    
