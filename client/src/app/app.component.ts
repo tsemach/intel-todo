@@ -6,6 +6,7 @@ import { ToDoAddItemType } from "./common/todo-add-item.type";
 import { ToDoEditedType } from "./common/todo-edit-item.type";
 import { ToDoDeleteType } from "./common/todo-delete-item.type";
 import { ToDoNewUserType } from './common/todo-new-user.type';
+import * as utils from './utils';
 
 @Component({
   selector: 'app-root',
@@ -108,7 +109,7 @@ export class AppComponent {
         (data: ToDosModel)  => {
           // console.log("[AppComponent:onTodoAddSelected] reply:", data);
           this.updateData(data);
-        },
+        }, 
         error => {
           console.log("[AppComponent:onTodoAddSelected] error:", error);
         }
@@ -138,10 +139,23 @@ export class AppComponent {
     this.todosService.editTodoItem(editItem);
   }
 
+  /**
+   * 
+   * @param deleteItem = {
+   *   _id: "5d456c974d769e0f015b3b4a",
+   *   _object_id: "5d456ca4ab42db4d74dd7ab5",
+   *   _item_id: "5d4584cc6f0c9570038f164b",
+   *   header: "fffffffffffffff",
+   *   isCompleted: false,
+   *   index: 0
+   * }
+   */
   onDeleteItem(deleteItem: ToDoDeleteType) {
     deleteItem._id = this.data._id;
 
-    console.log("[AppComponent:onEditItem] edit item:", deleteItem);
+    console.log("[AppComponent:onDeleteItem] delete item:", JSON.stringify(deleteItem, undefined, 2));
+    const item = utils.deleteItem(this.data, deleteItem);
+    console.log("[AppComponent:onDeleteItem] delete item is ok:", JSON.stringify(item, undefined, 2));
     this.todosService.deleteTodoItem(deleteItem);
   }
 

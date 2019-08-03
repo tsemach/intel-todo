@@ -92,9 +92,11 @@ export class ToDosService {
         this.httpOptions
       )
       .pipe(
-        map((reply: {success: string, data: ToDosModel}) => {
-          console.log("IN addNewTodo:", JSON.stringify(reply.data, undefined, 2));                    
-          return reply.data[0];
+        map((reply: {success: string, data: ToDosModel[]}) => {          
+          if (reply.data && reply.data.length > 0) {
+            return reply.data[0];
+          }
+          return null;
         })
       );
   }

@@ -26,11 +26,11 @@ class ItemRoute implements Service {
       logger.info("POST:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
       try {
         const reply = await Application.todos.addToDoItem(body)        
-        console.log("POST:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
+        logger.info("POST:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
         res.json({success: true, data: [reply]});
       }
       catch (e) {
-        console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
+        logger.error("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
         res.json({success: false, data: {error: e}});
       }
     });
@@ -42,11 +42,11 @@ class ItemRoute implements Service {
       logger.info("PUT:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
       try {
         const reply = await Application.todos.editToDoItem(body)        
-        console.log("PUT:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
+        logger.info("PUT:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
         res.json({success: reply.ok === 1, data: reply});
       }
       catch (e) {
-        console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
+        logger.error("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
         res.json({success: false, data: {error: e}});
       }
     });
