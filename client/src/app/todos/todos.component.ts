@@ -14,11 +14,13 @@ export class ToDosComponent implements OnInit {
 
   @Input() data: ToDosModel;
   newTodo = null;
+  selected: ToDoModel = null;
 
   ngOnInit() {
   }
 
   onTodoTitleSelected(todo: ToDoModel) {
+    this.selected = todo;
     this.todoTitleClick.emit(todo);
   }
 

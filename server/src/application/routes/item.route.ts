@@ -63,11 +63,11 @@ class ItemRoute implements Service {
       logger.info("DELETE:/v1/todos/item - get todo\n" + JSON.stringify(data, undefined, 2));      
       try {
         const reply = await Application.todos.deleteToDoItem(data);
-        console.log("DELETE:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
+        logger.info("DELETE:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
         res.json({success: true, data: {ok: 1}});
       }
       catch (e) {
-        console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
+        logger.error("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
         res.json({success: false, data: {error: e}});
       }
     });

@@ -9,11 +9,10 @@ class ToDos {
   }
 
   createNewUser(username: string, displayName: string) {
-    console.log(`[ToDos:createNewUser] got ${username} ${displayName}`);
+    logger.info(`[ToDos:createNewUser] got ${username} ${displayName}`);
 
     const query = { username };
     const update = { username, displayName, todos: [] };
-    //options = { upsert: true, new: true, setDefaultsOnInsert: true };
     const options = { upsert: true, new: true};
         
     return ToDosModel.findOneAndUpdate(query, update, options);

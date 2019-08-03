@@ -9,7 +9,7 @@
     "start": "node -r source-map-support/register dist/src/index.js",
     "debug": "nodemon node -r source-map-support/register dist/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-		"prod": "./scripts/build.sh"
+    "prod": "./scripts/build.sh"
   },
   "repository": {
     "type": "git",

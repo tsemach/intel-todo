@@ -1,7 +1,25 @@
 
+#todo-list-head-add {
+  height: 46px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  a {
+    padding-right: 10px;
+    padding-left: 10px;    
+  }
+
+  input {
+    flex: 1;
+    padding-right: 10px;    
+  }
+}
+
 .todo-list-head-container {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   background-color: silver;
   padding-top: 5px;
 

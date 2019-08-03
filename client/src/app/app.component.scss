@@ -13,16 +13,24 @@
   .app-container-user-detailes {
     display: flex;
 
-    #new-user {
+    .new-user {
       display: flex;  
       padding: 5px;
+      
       a {
+        border-radius: 4px;
         text-decoration: none; /* get rid of the underline of the anchor */
         font-family: Arial, Helvetica, sans-serif;
         padding: .2em 1em;
         color: #fff;
         background-color: #000000; 
         margin-right: 10px;
+
+        &.disabled {
+          pointer-events: none;
+          background:rgba(128,128,128, 0.5);
+          cursor: default;
+        }        
 
         &:hover {
           background-color: blueviolet;
@@ -52,13 +60,15 @@
     .app-todos {
       flex: 1;
       border: 1px solid;
-      background-color: aqua;
+      //background-color: rgb(135, 172, 187);
+      background-color: #d1dee4;
+;       
     }
 
     .app-todo-list {
       flex: 1.5;
       border: 1px solid;
-      background-color: aqua;
+      background-color: #d1dee4;
     }
   }
 }

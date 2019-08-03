@@ -25,6 +25,7 @@ export class AppComponent {
   isFetching = false;
   isNewUser = false;
   error = null;
+  
   public _reload = true;
 
   constructor(private todosService: ToDosService) { }
@@ -153,11 +154,15 @@ export class AppComponent {
    */
   onDeleteItem(deleteItem: ToDoDeleteType) {
     deleteItem._id = this.data._id;
-
-    console.log("[AppComponent:onDeleteItem] delete item:", JSON.stringify(deleteItem, undefined, 2));
     const item = utils.deleteItem(this.data, deleteItem);
     console.log("[AppComponent:onDeleteItem] delete item is ok:", JSON.stringify(item, undefined, 2));
     this.todosService.deleteTodoItem(deleteItem);
+  }
+
+  onRefreshClick() {
+    if (this.username) {
+      this.getToDos(this.username);
+    }
   }
 
   private reload() {

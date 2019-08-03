@@ -10,15 +10,14 @@ export class TodoTitleComponent implements OnInit {
   @Input() todo: ToDoModel;
   @Output() todoTitleClick = new EventEmitter<ToDoModel>();
 
+  @Input() selected: ToDoModel = null;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
-    // console.log("TodoTitleComponent: ngOnChanges, todo = ", JSON.stringify(this.todo, undefined, 2));
-    // console.log("TodoTitleComponent: ngOnChanges, todo.items =", this.todo.items.length);
-
   }
 
   getCompleted() {
@@ -31,8 +30,16 @@ export class TodoTitleComponent implements OnInit {
     return completed;
   }
 
-  onSelect() {
-    // console.log("[TodoTitleComponent:onSelect] is called, title:", this.todo.title);
+  onSelect() {        
     this.todoTitleClick.emit(this.todo);
+  }
+
+  isHighlight() {
+    if ( ! this.selected ) {
+      return false;
+    }
+    console.log("[TodoTitleComponent:onSelect] this.todo._id === this.selected._id", this.todo._id === this.selected._id);    
+    return this.todo._id === this.selected._id;
+    //return false;
   }
 }

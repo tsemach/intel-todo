@@ -7,6 +7,11 @@
   margin: 0;
   padding: 0;
 
+  &:hover {
+    background-color: rgb(164, 183, 218);
+    //background-color: red;
+  }
+
 
   h4 {
     font-size: 100%;
@@ -23,6 +28,11 @@
     }
   }
 }
-.todo-title-container:hover {
-  background-color: rgb(164, 183, 218);
-}
+
+// .todo-title-container:hover {
+//   background-color: rgb(164, 183, 218);
+//   // background-color: red;
+// }
+  .highlight {
+    background-color: rgb(164, 183, 218);
+  }

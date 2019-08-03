@@ -9,7 +9,8 @@
     <li class="list-group-item todos-title" *ngFor="let todo of data.todos">
       <app-todo-title
         [todo]="todo"
-        (todoTitleClick)="onTodoTitleSelected($event)"></app-todo-title>
+        (todoTitleClick)="onTodoTitleSelected($event)" [selected]="selected">
+      </app-todo-title>
     </li>
   </ul>
 </div>

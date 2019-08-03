@@ -1,5 +1,8 @@
 FROM node:10
 
+# setting node to be on production
+ENV NODE_ENV production
+
 # create app directory
 WORKDIR /app
 

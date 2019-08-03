@@ -31,12 +31,14 @@
     color: #fff;
     background-color: #000000; 
     margin-right: 10px;
+    border-radius: 4px;
 
     &:hover {
       background-color: blueviolet;
     }
   }
   input {
+    border-radius: 4px;
     flex: 1;  /* grow and fill in the avaiable space in a row*/
   }
 }

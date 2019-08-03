@@ -30,8 +30,8 @@ class TodosRoute implements Service {
 
         return;
       }
-
-      res.json({success: false, data: {message: 'user-route: no username found'}});
+      res.json({success: false, data: {message: "no user found"}});
+      
     });
     // --------------------------------------------------------------------------
     
@@ -51,53 +51,6 @@ class TodosRoute implements Service {
     });
     // --------------------------------------------------------------------------
 
-    // // --------------------------------------------------------------------------
-    // router.post('/item', async (req: express.Request, res: express.Response) => {
-    //   const { body } = req;
-    //   logger.info("POST:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
-    //   try {
-    //     const reply = await Application.todos.addToDoItem(body)
-    //     console.log("POST:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
-    //     res.json({success: reply.ok === 1, data: reply});
-    //   }
-    //   catch (e) {
-    //     console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
-    //     res.json({success: false, data: {error: e}});
-    //   }
-    // });
-    // // --------------------------------------------------------------------------
-
-    // // --------------------------------------------------------------------------
-    // router.put('/item', async (req: express.Request, res: express.Response) => {
-    //   const { body } = req;
-    //   logger.info("PUT:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
-    //   try {
-    //     const reply = await Application.todos.editToDoItem(body)
-    //     console.log("PUT:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
-    //     res.json({success: reply.ok === 1, data: reply});
-    //   }
-    //   catch (e) {
-    //     console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
-    //     res.json({success: false, data: {error: e}});
-    //   }
-    // });
-    // // --------------------------------------------------------------------------
-
-    // // --------------------------------------------------------------------------
-    // router.delete('/item', async (req: express.Request, res: express.Response) => {
-    //   const { body } = req;
-    //   logger.info("DELETE:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
-    //   try {
-    //     const reply = await Application.todos.deleteToDoItem(body)
-    //     console.log("DELETE:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
-    //     res.json({success: reply.ok === 1, data: reply});
-    //   }
-    //   catch (e) {
-    //     console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
-    //     res.json({success: false, data: {error: e}});
-    //   }
-    // });
-    // // --------------------------------------------------------------------------    
     return router;
   }
 

@@ -20,23 +20,6 @@ const todosSchema = new Schema({
   ]
 });
 
-// const todosSchema = new Schema({
-//   displayName: String,
-//   username: String,
-//   todos: [
-//     {
-//       title: String,
-//       items: [
-//         {
-//           header: String,
-//           isCompleted: Boolean
-//         }
-//
-//       ]
-//     }
-//   ]
-// });
-
 export default mongoose.model('Todo', todosSchema);
 
    
