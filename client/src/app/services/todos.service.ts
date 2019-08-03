@@ -76,7 +76,7 @@ export class ToDosService {
         this.httpOptions
       )
       .pipe(
-        map((reply: {success: string, data: ToDosModel}) => {
+        map((reply: {success: boolean, data: ToDosModel}) => {
           console.log("[SERVICE] IN addNewTodo:", JSON.stringify(reply, undefined, 2));
           if (reply.data && reply.data._id === newTodo._id) {
             return reply.data;
@@ -103,7 +103,7 @@ export class ToDosService {
         this.httpOptions
       )
       .pipe(
-        map((reply: {success: string, data: ToDosModel[]}) => {          
+        map((reply: {success: boolean, data: ToDosModel[]}) => {          
           if (reply.data && reply.data.length > 0) {
             return reply.data[0];
           }
