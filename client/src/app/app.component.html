@@ -1,20 +1,24 @@
-  <app-form-user>
-    <p>Form</p>
-
-  </app-form-user>
+<ng-container *ngIf="_reload">
 
 <div class="app-container">
   <h1>Intel ToDo Home Assignment</h1>
 
-  <div class='app-container-username'>
-    <label for="name">User Name:</label>
-    <input type="text" [value]="username" (keyup)="onUsername($event)">
-  </div>
-  <div class='app-container-username'>
-    <label for="name">Display Name:</label>
-    <input type="text" [value]="displayName" (keyup)="onUsername($event)">
-  </div>
+  <app-form-user *ngIf="isNewUser" (submit)="onNewUser($event)"></app-form-user>
+  <div class="app-container-user-detailes">
+    
+    <div id="new-user">
+      <a href="#" (click)="onNewUserClick()">New User</a>
+    </div>
 
+    <div class='app-container-username'>
+      <label for="name">User Name:</label>
+      <input type="text" [value]="username" (keyup)="onUsername($event)">
+    </div>
+    <div class='app-container-username'>
+      <label for="display">Display Name:</label>
+      <input type="text" [value]="displayName">
+    </div>
+  </div>
 
   <p *ngIf="!username">Please add a username</p>
   <div *ngIf="username" class="app-container-main">
@@ -34,4 +38,4 @@
   </div>
 </div>
 
-
+</ng-container>

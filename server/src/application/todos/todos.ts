@@ -8,8 +8,15 @@ class ToDos {
   constructor() {
   }
 
-  createNewUser(username: string) {
-    
+  createNewUser(username: string, displayName: string) {
+    console.log(`[ToDos:createNewUser] got ${username} ${displayName}`);
+
+    const query = { username };
+    const update = { username, displayName, todos: [] };
+    //options = { upsert: true, new: true, setDefaultsOnInsert: true };
+    const options = { upsert: true, new: true};
+        
+    return ToDosModel.findOneAndUpdate(query, update, options);
   }
 
   getToDos(username: string) {
@@ -34,17 +41,18 @@ class ToDos {
    */
   addToDoItem(data: ToDoAddItemType) {
     logger.info("[ToDos::addToDoItem] newToDoItem:", JSON.stringify(data, undefined, 2));
-    return ToDosModel.updateMany(
-      {_id: data._id, 'todos._id': data._object_id},
-      {
-        $push: {
-          'todos.$.items': {
-            header: data.header,
-            isCompleted: data.isCompleted
-          }
+
+    const query = {_id: data._id, 'todos._id': data._object_id}
+    const update = {
+      $push: {
+        'todos.$.items': {
+          header: data.header,
+          isCompleted: data.isCompleted
         }
       }
-    );
+    }
+    const options = { new: true };
+    return ToDosModel.findOneAndUpdate(query, update, options);           
   }
 
   /**

@@ -4,7 +4,7 @@
 </div>
 
 <div class="todos-title-container">
-  <p *ngIf="data && data.todos.length < 1">No posts available!</p>
+  <p *ngIf="data && data.todos.length < 1">No todos available!</p>
   <ul *ngIf="data && data.todos.length >= 1">
     <li class="list-group-item todos-title" *ngFor="let todo of data.todos">
       <app-todo-title

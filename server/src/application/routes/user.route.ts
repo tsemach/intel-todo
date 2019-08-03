@@ -17,7 +17,7 @@ import Application from '../application';
 class UserRoute implements Service {
 
   constructor() {
-    Server.instance.route('/user', this);
+    Server.instance.route('/v1/user', this);
   }
 
   public add(): express.Router {
@@ -26,7 +26,7 @@ class UserRoute implements Service {
     // --------------------------------------------------------------------------
     router.get('/', (req: express.Request, res: express.Response) => {
       if (req.query['username']) {
-        logger.info('GET:/user - got username = ', req.query['username'])
+        logger.info('GET:/v1/user - got username = ', req.query['username'])
         res.json({success: true, data: {message: `user-route: got name - ${req.query['username']}`}});
 
         return;
@@ -42,20 +42,22 @@ class UserRoute implements Service {
 
     // --------------------------------------------------------------------------
     router.post('/', async (req: express.Request, res: express.Response) => {
-      if (req.query['username']) {
-        logger.info('POST:/user - got username = ', req.query['username'])
+      const { userName, displayName } = req.body; 
+      if (userName) {
+        logger.info('POST:/v1/user - got username = ', userName)
 
         try {  
-          const reply = await Application.todos.createNewUser(req.query['username']);
-          
+          const reply = await Application.todos.createNewUser(userName, displayName);
+           logger.info('POST:/v1/user - add user, reply:', JSON.stringify(reply, undefined, 2));
+           res.json({success: true, data: reply});     
         }
         catch (e) {
-          res.json({success: true, data: {message: `user-route: got name - ${req.query['username']}`}});
-        }        
-        return;
-      }
+          logger.error("POST:/v1/user - ERROR:", e, "\n", e.stack);
+          res.json({success: false, data: {error: e}});        }        
 
-      res.json({success: true, data: {message: 'user-route: no username found'}});
+          return;
+      }
+      res.json({success: false, data: {message: 'anable to user userName field'}});
     });
 
     router.get('/todo', (req: express.Request, res: express.Response) => {      

@@ -26,8 +26,14 @@ example: curl http://localhost:3000/v1/todos
 -----------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------
+description: add new user
+method: POST: /v1/user
+example: curl -d '{"userName": "user@somewhere.com", "displayName": "User Name"}' -H "Content-Type: application/json" -X POST http://localhost:3000/v1/user
+-----------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------
 description: add todo to user
-method: POST: /v1/todos/add
+method: POST: /v1/todos
 example: curl -X POST http://localhost:3000/v1/todos -H "Content-Type: application/json" -d '{"_id": "5d433466cc2fd3121814e97e", "title": "add new todo"}'
 -----------------------------------------------------------------------------------
 

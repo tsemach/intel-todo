@@ -10,17 +10,15 @@
   <button class="btn btn-primary">Submmit</button>
 </form> -->
 
-<form #f="ngForm" (ngOnSubmit)="submit(f)">
-  <div class="form-group" id="add-user">
-    <div class="field">
-      <label>User Name:</label>
-        <input type="text" required [(ngModel)]="userName" name="firstName" #firstName="ngModel" (change)="log(firstName)" [ngModelOptions]="{standalone: true}"/>
-      </div>
-
-    <div class="field">
-      <label>Display Name:</label>    
-      <input type="text" required [(ngModel)]="displayName" name="displatName" #firstName="ngModel" (change)="log(displayName)" [ngModelOptions]="{standalone: true}"/>
+<div class="form-group" id="add-user">
+  <div class="field">
+    <label>User Name:</label>
+      <input type="text" required [(ngModel)]="userName" name="firstName" #firstName="ngModel"  [ngModelOptions]="{standalone: true}"/>
     </div>
-    <button (click)="onSubmit()">+</button>
+
+  <div class="field">
+    <label>Display Name:</label>    
+    <input type="text" required [(ngModel)]="displayName" name="displatName" #firstName="ngModel"  [ngModelOptions]="{standalone: true}"/>
   </div>
-</form>
+  <button (click)="onSubmit()">+</button>
+</div>

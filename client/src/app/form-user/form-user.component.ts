@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { ToDoNewUserType } from '../common/todo-new-user.type';
 
 @Component({
   selector: 'app-form-user',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-user.component.scss']
 })
 export class FormUserComponent implements OnInit {
+  @Output() submit = new EventEmitter<ToDoNewUserType>();    
+
   userName = '';
   displayName = '';
 
@@ -15,13 +18,6 @@ export class FormUserComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("user=", this.userName);
-    console.log("display=", this.displayName);
-  }
-
-  log(z) {
-    console.log(z);
-    console.log(this.userName);
-    console.log(this.displayName)
+    this.submit.emit({userName: this.userName, displayName: this.displayName} as ToDoNewUserType);
   }
 }

@@ -4,6 +4,7 @@ const logger = createLogger('ItemRoute');
 import * as logger from 'logging';
 import * as express from 'express';
 
+import * as utils from '../../utils/utils';
 import Server from '../../express/server';
 import Service from '../../express/service.type';
 
@@ -24,9 +25,9 @@ class ItemRoute implements Service {
       const { body } = req;
       logger.info("POST:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
       try {
-        const reply = await Application.todos.addToDoItem(body)
+        const reply = await Application.todos.addToDoItem(body)        
         console.log("POST:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
-        res.json({success: reply.ok === 1, data: reply});
+        res.json({success: true, data: [reply]});
       }
       catch (e) {
         console.log("POST:/v1/todos/item/add - ERROR:", e, "\n", e.stack);
@@ -40,7 +41,7 @@ class ItemRoute implements Service {
       const { body } = req;
       logger.info("PUT:/v1/todos/item - get todo\n" + JSON.stringify(body, undefined, 2));
       try {
-        const reply = await Application.todos.editToDoItem(body)
+        const reply = await Application.todos.editToDoItem(body)        
         console.log("PUT:/v1/todos/item reply = ", JSON.stringify(reply, undefined, 2));
         res.json({success: reply.ok === 1, data: reply});
       }
