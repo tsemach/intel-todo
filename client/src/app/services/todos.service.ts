@@ -3,16 +3,18 @@ import { Injectable } from '@angular/core';
 import { Subject, ReplaySubject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
+import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ToDosModel } from '../common/todos.model';
 import { ToDoAddType } from '../common/todo-add.type';
-import {ToDoAddItemType} from "../common/todo-add-item.type";
-import {ToDoEditedType} from "../common/todo-edit-item.type";
-import {ToDoDeleteType} from "../common/todo-delete-item.type";
+import { ToDoAddItemType } from "../common/todo-add-item.type";
+import { ToDoEditedType } from "../common/todo-edit-item.type";
+import { ToDoDeleteType } from "../common/todo-delete-item.type";
 
 @Injectable({providedIn: 'root'})
 export class ToDosService {
-  private base = 'http://localhost:3000';
+  //private base = 'http://localhost:3000';
+  private base = environment.host;
   private cached = new Map<string, string>();
 
   httpOptions = {
