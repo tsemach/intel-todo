@@ -15,6 +15,8 @@ rm -rf client/dist
 (cd ../client; ng build --prod)
 cp -r ../client/dist ./client/dist
 
+tsc -sourcemap
+
 docker build -t tsemach/intel .
 docker push tsemach/intel
 
