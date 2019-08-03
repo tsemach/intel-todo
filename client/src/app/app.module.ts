@@ -13,6 +13,7 @@ import { TodoListHeadComponent } from './todo-list/todo-list-head/todo-list-head
 import { TodoListItemComponent } from './todo-list/todo-list-item/todo-list-item.component';
 import { LineThroughDirective } from './directives/line-through.directive';
 import { FormUserComponent } from './form-user/form-user.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormUserComponent } from './form-user/form-user.component';
     TodoListHeadComponent,
     TodoListItemComponent,
     LineThroughDirective,
-    FormUserComponent
+    FormUserComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

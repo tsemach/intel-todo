@@ -1,7 +1,9 @@
 <ng-container *ngIf="_reload">
 
+<app-header></app-header>
 <div class="app-container">
-  <h1>Intel ToDo Home Assignment</h1>
+  <!-- <h1>Intel ToDo Home Assignment</h1> -->
+  <h1></h1> 
 
   <app-form-user *ngIf="isNewUser" (submit)="onNewUser($event)"></app-form-user>
   <div class="app-container-user-detailes">

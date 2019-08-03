@@ -10,11 +10,10 @@ import Middleware from './middleware.type';
 export default class Server {
   private static _instance: Server = new Server();
 
-  //public express: express.Application;
-  public app:express.Application = express();
+  public app: express.Application = express();
     
   private constructor() {     
-    const { NODE_ENV } = process.env;
+    const { NODE_ENV = "development" } = process.env;
     logger.info(`SERVER: env = ${NODE_ENV} _dirname=${__dirname + '/../../../client/dist/'}`);
 
     if (NODE_ENV === 'production') {
