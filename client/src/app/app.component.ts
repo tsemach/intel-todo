@@ -24,6 +24,7 @@ export class AppComponent {
   displayName: string = '';
   isFetching = false;
   isNewUser = false;
+  success = false;
   error = null;
   
   public _reload = true;
@@ -51,10 +52,16 @@ export class AppComponent {
     this.isFetching = true;
     this.todosService.getToDos(username, null)
     .subscribe(
-      data => {        
-        console.log("[AppComponent:getToDos] BFOREEEEEEEEEEEEE =", JSON.stringify(data, undefined, 2));
-        const updatedData = this.updateData(data);
-        console.log("[AppComponent:getToDos] this.updateData(data) =", updatedData);
+      reply => {        
+        console.log("[AppComponent:getToDos] got todos =", JSON.stringify(reply, undefined, 2));
+        if ( ! reply ) {
+          this.success = false;
+          this.data = null;
+
+          return;          
+        }
+        this.success = reply.success === true;
+        const updatedData = this.updateData(reply.data);        
 
         return updatedData;
       },

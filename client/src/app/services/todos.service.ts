@@ -57,9 +57,9 @@ export class ToDosService {
     return this.http
       .get(url)
       .pipe(
-        map((reply: {success: string, data: ToDosModel[]}) => {
+        map((reply: {success: boolean, data: ToDosModel[]}) => {
           if (reply.data.length >= 1 && reply.data[0].username === username) {
-            return reply.data[0];
+            return {success: reply.success, data: reply.data[0]};
           }
         }
       )
