@@ -91,14 +91,12 @@ export class ToDosService {
         {_id, ...newTodoItem},
         this.httpOptions
       )
-      // .pipe(
-      //   map((reply: {success: string, data: ToDosModel}) => {
-      //     console.log("IN addNewTodo:", JSON.stringify(reply, undefined, 2));
-      //     // if (reply.data && reply.data._id === newTodo._id) {
-      //     //   return reply.data;
-      //     // }
-      //   })
-      // );
+      .pipe(
+        map((reply: {success: string, data: ToDosModel}) => {
+          console.log("IN addNewTodo:", JSON.stringify(reply.data, undefined, 2));                    
+          return reply.data[0];
+        })
+      );
   }
 
   /**

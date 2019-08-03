@@ -120,9 +120,8 @@ export class AppComponent {
     this.todosService.addNewTodoItem(this.data._id, newItem)
       .subscribe(
         (data: any)  => {
-          console.log("[AppComponent:onAddNewItem] RELOAD IS CALLED f:", data);
-          this.isFetching = false;
-          this.data = data;
+          console.log("[AppComponent:onAddNewItem] RELOAD IS CALLED f:", JSON.stringify(data, undefined, 2));
+          this.updateData(data);
           // this.current = null;          
 
           // this.reload();
