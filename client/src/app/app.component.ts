@@ -42,6 +42,9 @@ export class AppComponent {
     if (this.data && this.data.todos.length > 0) {
       this.current = this.data.todos[0];
     }
+    if (this.data && this.data.displayName) {
+      this.displayName = data.displayName;
+    }
 
     console.log("[AppComponent::updateData] data =", JSON.stringify(this.data, undefined, 2))
 
