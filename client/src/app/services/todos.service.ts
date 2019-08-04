@@ -38,7 +38,7 @@ export class ToDosService {
       .pipe(
         map((reply: {success: string, data: ToDosModel[]}) => {
           if (reply.data.length >= 1) {
-            return reply.data[0];
+            return {success: reply.success, data: reply.data[0]};
           }
           return null;
         }
@@ -79,8 +79,9 @@ export class ToDosService {
         map((reply: {success: boolean, data: ToDosModel}) => {
           console.log("[SERVICE] IN addNewTodo:", JSON.stringify(reply, undefined, 2));
           if (reply.data && reply.data._id === newTodo._id) {
-            return reply.data;
+            return {success: reply.success, data: reply.data};
           }
+          return {success: false, data: null};
         }
       ));
   }
@@ -160,13 +161,6 @@ export class ToDosService {
         url,        
         this.httpOptions
       )
-      .subscribe(
-        (data: any)  => {
-          console.log("[ToDosService:editTodoItem] reply:", data);
-        },
-        error => {
-          console.log("[ToDosService:editTodoItem] error:", error);
-        });
   }  
 }
 

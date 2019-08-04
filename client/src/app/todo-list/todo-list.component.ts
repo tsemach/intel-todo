@@ -24,7 +24,6 @@ export class ToDoListComponent implements OnInit {
 
   todoListAddNewItem(newItemName: string) {
     const newItem: ToDoAddItemType = {_object_id: this.todo._id, header: newItemName, isCompleted: false}
-    console.log("[ToDoListComponent:todoListAddNewItem]: newItem =", newItem);
 
     this.todoAddNewItem.emit(newItem)
   }
@@ -32,14 +31,12 @@ export class ToDoListComponent implements OnInit {
   todoListEditItem(editItem: ToDoEditedType) {
     editItem._object_id = this.todo._id;
 
-    console.log('[ToDoListComponent::todoListEditItem] editItem=', editItem);
     this.todoEditItem.emit(editItem);
   }
 
   todoListDeleteItem(deleteItem: ToDoDeleteType) {
     deleteItem._object_id = this.todo._id;
-
-    console.log('[ToDoListComponent::todoListDeleteItem] deleteItem=', deleteItem);
+    
     this.todoDeleteItem.emit(deleteItem);
   }
 }

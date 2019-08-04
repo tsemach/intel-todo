@@ -16,10 +16,12 @@
       <label for="name">User Name:</label>
       <input type="text" [value]="username" (keyup)="onUsername($event)">
     </div>
+
     <div class='app-container-username'>
       <label for="display">Display Name:</label>
       <input type="text" [value]="displayName">
     </div>
+
   </div>
 
   <p *ngIf="!username">Please add a username</p>
@@ -43,6 +45,8 @@
       (todoDeleteItem)="onDeleteItem($event)">
     </app-todo-list>
   </div>
+
+  <app-todo-alert [alerts]="alertsSubject.asObservable()"></app-todo-alert>
 </div>
 
 </ng-container>

@@ -38,8 +38,6 @@ export class TodoTitleComponent implements OnInit {
     if ( ! this.selected ) {
       return false;
     }
-    console.log("[TodoTitleComponent:onSelect] this.todo._id === this.selected._id", this.todo._id === this.selected._id);    
     return this.todo._id === this.selected._id;
-    //return false;
   }
 }
