@@ -24,7 +24,7 @@
 
   <p *ngIf="!username">Please add a username</p>
 
-  <div *ngIf="!success && username" class="alert alert-danger" role="alert">    
+  <div *ngIf="!success && username && ! isFetching" class="alert alert-danger" role="alert">    
     Username {{ username }} is not found
   </div>
 

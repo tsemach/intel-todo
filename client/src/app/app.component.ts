@@ -60,6 +60,7 @@ export class AppComponent {
         if ( ! reply ) {
           this.success = false;
           this.data = null;
+          this.isFetching = false;
 
           return;          
         }
@@ -89,6 +90,7 @@ export class AppComponent {
           this.updateData(reply);
         },
         error => {
+          this.isFetching = false
           console.log("[AppComponent:createNewUser] error:", error);
         });
   }
