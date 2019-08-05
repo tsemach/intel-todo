@@ -2,6 +2,11 @@
 
 A Todo list managment application using Angular - NodeJS - MongoDB.
 
+## Rnning from AWS - Zero Installation
+Just open a browser on (http://18.222.101.203)
+
+It use both AWS EC2 hosting the server and MLab mongodb cloud service to hosting the database.
+
 ## Rnning using Docker
 The application is deliver ad single docker image available in [public docker repository](https://cloud.docker.com/repository/docker/tsemach/intel).
 
