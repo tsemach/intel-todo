@@ -1,0 +1,10 @@
+version: '3'
+services:
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+  todo:
+    image: "tsemach/intel"
+    ports:
+      - "3000:3000"

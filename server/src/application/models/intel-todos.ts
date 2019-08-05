@@ -20,6 +20,6 @@ const todosSchema = new Schema({
   ]
 });
 
-export default mongoose.model('Todo', todosSchema);
+export default mongoose.model('Todo', todosSchema, "todos");
 
    
