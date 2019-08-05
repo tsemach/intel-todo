@@ -8,8 +8,16 @@
   }
 }
 
+.todos-container-wrapper {
+  height: 600px;
+  display: flex;
+  align-content: space-between;
+  flex-direction: column;
+}
+
 .todos-title-container {
   display: flex;  
+  flex: 1;
 
   .todos-title {
     padding: 0;    

@@ -3,19 +3,23 @@
   <h3 class="todos-header">ToDos List</h3>
 </div>
 
-<div class="todos-title-container">
-  <p *ngIf="data && data.todos.length < 1">No todos available!</p>
-  <ul *ngIf="data && data.todos.length >= 1">
-    <li class="list-group-item todos-title" *ngFor="let todo of data.todos">
-      <app-todo-title
-        [todo]="todo"
-        (todoTitleClick)="onTodoTitleSelected($event)" [selected]="selected">
-      </app-todo-title>
-    </li>
-  </ul>
-</div>
+<div class="todos-container-wrapper">
 
-<div id="todos-add">
-  <a href="#" (click)="onAddTodo()">Add Todo</a>
-  <input type="text" id="name" [(ngModel)]="newTodo" (keyup)=onNewTodoKeydown($event)>
+  <div class="todos-title-container">
+    <p *ngIf="data && data.todos.length < 1">No todos available!</p>
+    <ul *ngIf="data && data.todos.length >= 1">
+      <li class="list-group-item todos-title" *ngFor="let todo of data.todos">
+        <app-todo-title
+          [todo]="todo"
+          (todoTitleClick)="onTodoTitleSelected($event)" [selected]="selected">
+        </app-todo-title>
+      </li>
+    </ul>
+  </div>
+
+  <div id="todos-add">
+    <a href="#" (click)="onAddTodo()">Add Todo</a>
+    <input type="text" id="name" [(ngModel)]="newTodo" (keyup)=onNewTodoKeydown($event)>
+  </div>
+
 </div>
