@@ -10,16 +10,20 @@ const {
   MONGODB_CONNECTION_MODE = "remote"
 } = process.env;
 
+let waiting = 0;
 let uri = "mongodb+srv://tsemach:LgA4VfbH0knDwcPh@center-1-kivdh.mongodb.net?retryWrites=true&w=majority";
 if (MONGODB_CONNECTION_MODE === 'local') {
-  uri = "mongodb://localhost:27017/intel-todos";  
+  uri = "mongodb://db:27017/intel-todos";  
+  waiting = 5000;
 }
 
-mongoose.set('useFindAndModify', false);
-mongoose.connect(uri, {dbName: 'intel-todo'});
-mongoose.connection.once('open', () => {
-  console.log('connected to todos database on:', uri);
-});
+setTimeout(() => {
+  mongoose.set('useFindAndModify', false);
+  mongoose.connect(uri, {dbName: 'intel-todo'});
+  mongoose.connection.once('open', () => {
+    console.log('connected to todos database on:', uri);
+  });  
+}, waiting);
 
 const port = process.env.PORT || 3000;
 

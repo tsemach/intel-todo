@@ -15,9 +15,21 @@ The application is deliver ad single docker image available in [public docker re
 ````bash
 docker run -p 3000:3000 -d --name todo tsemach/intel
 ````
-> Make sure no other application is running on port 3000.
 
 Browse to http://localhost:3000 
+>Note: you may firewall issue since the container require access to MLab on port which may be blocked.
+
+> Make sure no other application is running on port 3000.
+> 
+## Rnning using Docker Compose
+Clone the project from github.com (just to get the docker-compose file) by:
+````bash
+git clone https://github.com/tsemach/intel-todo.git
+````
+Cd to intel-todo directory then run docker-compose by:
+````bash
+docker-compose up
+````
 
 ## Running from Source (development enviroment)
 1. Clone the project from github by:

@@ -1,10 +1,17 @@
 version: '3'
 services:
   db:
+    container_name: db
     image: mongo
     ports:
       - "27017:27017"
   todo:
+    container_name: todo
     image: "tsemach/intel"
     ports:
       - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      MONGODB_CONNECTION_MODE: "local"
+
